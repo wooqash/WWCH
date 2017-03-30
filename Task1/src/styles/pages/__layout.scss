@@ -1,0 +1,86 @@
+html {
+	font-family: Arial, sans-serif, Tahoma;
+}
+
+body {
+	width: 100%;
+    
+	// UNCOMMENT IF USING SASS-CORE FRAMEWORK AND PX FONT UNITS
+	//@include font-px(md);
+    background: $main-bg-img no-repeat top center;
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+//input, textarea {
+//	&:focus, &:active {
+//		border: none;
+//		outline: none;
+//	}
+//}
+
+button {
+	
+	&:focus {
+		outline: none;
+	}
+	
+	&::-moz-focus-inner {
+	    padding: 0;
+	    border: 0
+	}
+}
+
+
+.clear {
+	*zoom: 1;
+	&:before, &:after {
+	    content: " ";
+	    display: table;
+	}
+	
+	&:after {
+	    clear: both;
+	}
+	
+}
+
+//layout
+
+.page_wrapper {
+	width: 1050px;
+	max-width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.header__image{
+//    max-width: 429px;
+    display: block;
+    margin: 55px auto 0;
+}
+
+.main-section{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.main-section__column{
+    max-width: 420px;
+    width: 100%;
+}
+
+
