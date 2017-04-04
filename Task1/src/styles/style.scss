@@ -17,10 +17,11 @@
 @import 'config/mixins';
 @import 'config/colors';
 @import 'config/fonts';
+@import 'config/elements';
 
 
 // sprites - uncomment if used
-//@import 'sprites/**/*';
+@import 'sprites/**/*';
 
 
 //components

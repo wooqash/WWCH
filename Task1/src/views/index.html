@@ -27,12 +27,41 @@
 
       <main class="main-section">
         <div class="main-section__column">
-            <section class="form-section form-section--register">
+            <section class="form-section form-section_register">
                 <h2 class="form-section__title">Register Form</h2>
                 <form action="#" class="form">
-                    <div class="form-field">
-                        <label for="registerUsername"></label>
-                        <input name="registerUsername" type="text" class="form__input" placeholder="Username">
+                    <div class="form__field">
+                        <label for="registerUsername" class="form__label"><span class="label__icon label__icon_user"></span></label>
+                        <input id="registerUsername" name="registerUsername" type="text" class="form__input" placeholder="Username">
+                    </div>
+                    <div class="form__field">
+                        <label for="registerPwd" class="form__label"><span class="label__icon label__icon_pwd"></span></label>
+                        <input id="registerPwd" name="registerPwd" type="password" class="form__input" placeholder="Password">
+                    </div>
+                    <div class="form__field">
+                        <label for="registerConfirmPwd" class="form__label"><span class="label__icon label__icon_pwd"></span></label>
+                        <input id="registerConfirmPwd" name="registerConfirmPwd" type="password" class="form__input" placeholder="Confirm Password">
+                    </div>
+                    <div class="form__field">
+                        <label for="registerEmail" class="form__label"><span class="label__icon label__icon_email"></span></label>
+                        <input id="registerEmail" name="registerEmail" type="email" class="form__input" placeholder="Email">
+                    </div>
+                    <div class="form__field">
+                        <select name="registerLocation" id="registerLocation" class="form__select">
+                            <option value="hide">Your location</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Russia">Russia</option>
+                            <option value="USA">USA</option>
+                        </select>
+                    </div>
+                    <div class="form__field">
+                        <input id="registerTerms" name="registerTerms" type="checkbox" class="form__checkbox" placeholder="Confirm Password">
+                        <label for="registerTerms" class="form__label form__label_checkbox"><span class="label__text label__text_checkbox">I have read and accept the terms of use.</span></label>
+                    </div>                    
+                    <div class="form-field form-field_last">
+                        <button type="submit" class="form__btn form__btn_submit">Sign up</button>
+                        <button type="submit" class="form__btn form__btn_reset">Sign up</button>
                     </div>
                 </form>
             </section>   
