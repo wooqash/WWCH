@@ -8,7 +8,7 @@ function ready(fn) {
     }
 }
 
-const customSelect = (function(){
+const customSelect = (function(window, document){
     const forEach = function(array, callback, scope) {
         for (var i = 0; i < array.length; i++) {
             callback.call(scope, i, array[i]); // passes back stuff we need
@@ -38,11 +38,26 @@ const customSelect = (function(){
         var oldEventName = 'on' + eventName,
             useCapture = eventCapture ? eventCapture : false;
 
+
         if (element.addEventListener) {
             element.addEventListener(eventName, eventHandler, useCapture);
         } else if (element.attachEvent) {
             element.attachEvent(oldEventName, eventHandler);
         }
+        console.log(element, oldEventName);
+    }
+
+    const itemClick = function (e) {
+        e.stopPropagation();
+        let itemValue = e.target.attributes['rel'],
+            list = e.target.parentNode,
+            styledSelect = list.previousElementSibling;
+
+        console.log(itemValue, list, styledSelect);
+
+
+
+        console.log(e);
     }
     
     const createCustomSelect = function(){
@@ -71,13 +86,21 @@ const customSelect = (function(){
                 
                 li.textContent = thisSelect.children[i].textContent;
                 li.setAttribute('rel', thisSelect.children[i].value);
+                addEvent(li, 'click', itemClick);
                 
                 customSelectOptions.appendChild(li);
             }
             
             let customSelectItems = customSelectOptions.children;
             
-            
+            addEvent(customSelectItems, 'click', function(e){
+                console.log(e)
+            });
+            // console.log(customSelectItems[0]);
+            // customSelectItems[0].addEventListener('click', function(e){
+            //     console.log(e);
+            // });
+
             console.log(customSelectItems);
         });
     };
@@ -85,7 +108,7 @@ const customSelect = (function(){
     return {
         init: createCustomSelect
     };
-}());
+}(window, document));
 
 
 function init() {
