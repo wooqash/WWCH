@@ -9,6 +9,8 @@ function ready(fn) {
 }
 
 const customSelect = (function(window, document){
+    
+    
     const forEach = function(array, callback, scope) {
         for (var i = 0; i < array.length; i++) {
             callback.call(scope, i, array[i]); // passes back stuff we need
@@ -16,6 +18,7 @@ const customSelect = (function(window, document){
     };
     
     const addClass = function(el, className) {
+        console.log(el, className, el.classList);
         if (el.classList) {
             el.classList.add(className);
         } else {
@@ -23,8 +26,15 @@ const customSelect = (function(window, document){
         }
     };
     
+    const removeClass = function(el, className) {
+        if (el.classList) {
+            el.classList.remove(className);
+        } else {
+            el.className += ' ';
+        }
+    };
+    
     const wrapTag = function (toWrap, wrapper) {
-        console.log(toWrap, wrapper);
         wrapper = wrapper || document.createElement('div');
         if (toWrap.nextSibling) {
             toWrap.parentNode.insertBefore(wrapper, toWrap.nextSibling);
@@ -44,21 +54,34 @@ const customSelect = (function(window, document){
         } else if (element.attachEvent) {
             element.attachEvent(oldEventName, eventHandler);
         }
-        console.log(element, oldEventName);
-    }
+    };
 
-    const itemClick = function (e) {
+    const hideStyledSelect = function(e){
         e.stopPropagation();
-        let itemValue = e.target.attributes['rel'],
-            list = e.target.parentNode,
-            styledSelect = list.previousElementSibling;
+        const styleSelect = document.querySelectorAll('.styledSelect'),
+              list = document.querySelectorAll('.customSelect__options');
 
-        console.log(itemValue, list, styledSelect);
-
-
-
+        forEach(styleSelect, function(index){
+            removeClass(styleSelect[index], 'active');    
+        });
+        forEach(list, function(index){
+            addClass(list[index], 'hide');
+        });
+    };
+    
+    const itemClick = function (e) {
         console.log(e);
-    }
+        e.stopPropagation();
+        let item = e.target,
+            itemValue = item.attributes['rel'].value,
+            list = e.target.parentNode,
+            styledSelect = list.previousElementSibling,
+            select = styledSelect.previousElementSibling;
+
+        select.value = itemValue;
+//        addClass(list, 'hide');
+        hideStyledSelect(e);
+    };
     
     const createCustomSelect = function(){
         let selectSelectors = document.querySelectorAll('.form__select');
@@ -77,7 +100,7 @@ const customSelect = (function(window, document){
             let styledSelect = thisSelect.nextElementSibling;
             
             styledSelect.textContent = thisSelect.children[0].textContent;
-            styledSelect.insertAdjacentHTML('afterend', '<ul class="customSelect__options"></ul>')
+            styledSelect.insertAdjacentHTML('afterend', '<ul class="customSelect__options"></ul>');
             
             let customSelectOptions = styledSelect.nextElementSibling;
             
@@ -93,16 +116,12 @@ const customSelect = (function(window, document){
             
             let customSelectItems = customSelectOptions.children;
             
-            addEvent(customSelectItems, 'click', function(e){
-                console.log(e)
-            });
-            // console.log(customSelectItems[0]);
-            // customSelectItems[0].addEventListener('click', function(e){
-            //     console.log(e);
-            // });
-
+            addEvent(customSelectItems, 'click', itemClick);
+            
             console.log(customSelectItems);
         });
+        
+        addEvent(document.querySelector('body'), 'click', hideStyledSelect);
     };
     
     return {
