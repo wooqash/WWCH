@@ -9,7 +9,30 @@ function ready(fn) {
 }
 
 const customSelect = (function(window, document){
-    
+    const config = {
+        selectClass: '.form__select',
+        selectClassHidden: '.form__select_hidden',
+        customSelectWrapperClass: '.custom-select',
+        styledSelectClass: '.custom-select__styled-select',
+        styledSelectActiveClass: '.custom-select__styled-select_active',
+        optionsClass: '.customSelect__options',
+        optionsClassHidden: '.customSelect__options_hide'
+    };
+
+    const setSelectClass = function(className){
+        if(!className){return;}
+
+        if(className.indexOf('.') < 0){
+            className = '.' + className;
+        }
+        config.selectClass = className;
+
+        console.log(config.selectClass);
+    };
+
+
+
+
     
     const forEach = function(array, callback, scope) {
         for (var i = 0; i < array.length; i++) {
@@ -18,7 +41,7 @@ const customSelect = (function(window, document){
     };
     
     const addClass = function(el, className) {
-        console.log(el, className, el.classList);
+        // console.log(el, className, el.classList);
         if (el.classList) {
             el.classList.add(className);
         } else {
@@ -33,6 +56,22 @@ const customSelect = (function(window, document){
             el.className += ' ';
         }
     };
+
+    const toggleClass = function(el, className){
+        if (el.classList) {
+          el.classList.toggle(className);
+        } else {
+          var classes = el.className.split(' ');
+          var existingIndex = classes.indexOf(className);
+
+          if (existingIndex >= 0)
+            classes.splice(existingIndex, 1);
+          else
+            classes.push(className);
+
+          el.className = classes.join(' ');
+        }
+    }
     
     const wrapTag = function (toWrap, wrapper) {
         wrapper = wrapper || document.createElement('div');
@@ -58,19 +97,32 @@ const customSelect = (function(window, document){
 
     const hideStyledSelect = function(e){
         e.stopPropagation();
-        const styleSelect = document.querySelectorAll('.styledSelect'),
-              list = document.querySelectorAll('.customSelect__options');
+        const styleSelect = document.querySelectorAll(config.styledSelectClass),
+              list = document.querySelectorAll(config.optionsClass);
 
         forEach(styleSelect, function(index){
-            removeClass(styleSelect[index], 'active');    
+            removeClass(styleSelect[index], config.styledSelectActiveClass.substr(1));    
         });
+
+        console.log(list, config.optionsClassHidden.substr(1));
         forEach(list, function(index){
-            addClass(list[index], 'hide');
+            addClass(list[index], config.optionsClassHidden.substr(1));
         });
+    };
+
+    const styledSelectClick = function(e){
+        console.log(e);
+        e.stopPropagation();
+        let styledSelect = e.target,
+            list = styledSelect.nextElementSibling;
+
+        console.log(list);
+        toggleClass(styledSelect, config.styledSelectActiveClass.substr(1));
+        toggleClass(list, config.optionsClassHidden.substr(1));
     };
     
     const itemClick = function (e) {
-        console.log(e);
+        
         e.stopPropagation();
         let item = e.target,
             itemValue = item.attributes['rel'].value,
@@ -83,24 +135,25 @@ const customSelect = (function(window, document){
         hideStyledSelect(e);
     };
     
-    const createCustomSelect = function(){
-        let selectSelectors = document.querySelectorAll('.form__select');
+    const createCustomSelect = function(){ 
+        let selectSelectors = document.querySelectorAll(config.selectClass);
         
         forEach(selectSelectors, function (index, value) {
             let thisSelect = value,
                 numberOfOptions = thisSelect.children.length,
                 customSelect = document.createElement('div');
             
-            addClass(thisSelect, 'form__select_hidden');
-            addClass(customSelect, 'customSelect');
+            addClass(thisSelect, config.selectClassHidden.substr(1));
+            addClass(customSelect, config.customSelectWrapperClass.substr(1));
 
             wrapTag(thisSelect, customSelect);
-            thisSelect.insertAdjacentHTML('afterend', '<div class="styledSelect"></div>');
+            thisSelect.insertAdjacentHTML('afterend', '<div class="'+ config.styledSelectClass.substr(1) +'"></div>');
             
             let styledSelect = thisSelect.nextElementSibling;
             
             styledSelect.textContent = thisSelect.children[0].textContent;
-            styledSelect.insertAdjacentHTML('afterend', '<ul class="customSelect__options"></ul>');
+            styledSelect.insertAdjacentHTML('afterend', '<ul class="'+ config.optionsClass.substr(1) +' '+ config.optionsClassHidden.substr(1) +'"></ul>');
+            addEvent(styledSelect, 'click', styledSelectClick);
             
             let customSelectOptions = styledSelect.nextElementSibling;
             
@@ -116,21 +169,21 @@ const customSelect = (function(window, document){
             
             let customSelectItems = customSelectOptions.children;
             
-            addEvent(customSelectItems, 'click', itemClick);
-            
-            console.log(customSelectItems);
+            addEvent(customSelectItems, 'click', itemClick);           
         });
         
         addEvent(document.querySelector('body'), 'click', hideStyledSelect);
     };
     
     return {
+        setSelectClass: setSelectClass,
         init: createCustomSelect
     };
 }(window, document));
 
 
 function init() {
+    // customSelect.setSelectClass('test');
     customSelect.init();
 }
 
