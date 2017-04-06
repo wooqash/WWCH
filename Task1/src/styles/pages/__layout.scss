@@ -9,7 +9,7 @@ body {
 	//@include font-px(md);
     background: $main-bg-img no-repeat top center;
     background-size: cover;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: $font-titillium;
 }
 
 *, *:before, *:after {

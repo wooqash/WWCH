@@ -1,34 +1,77 @@
+//General
+$form-elem-font-family: $font-titillium;
+$form-elem-font-size: 16px;
+$form-elem-font-weight: $font-titillium-light;
+$form-elem-border-color: $lavender-gray;
+$form-elem-border-width: 1px;
+$form-elem-border-style: solid;
+$form-elem-border-radius: 4px;
+$form-elem-color: $silver-chailce;
+$form-elem-gradient-top-color: $ghost-white;
+$form-elem-gradient-top-color-active: darken($ghost-white, 2);
+$form-elem-gradient-bottom-color: $anti-flash-white;
+$form-elem-gradient-bottom-color-active: darken($anti-flash-white, 2);
+$form-elem-width: 100%;
+$form-elem-height: 40px;
+$form-elem-padding: 0 20px 0 80px;
+
+//Inputs
+$input-width: $form-elem-width;
+$input-height: $form-elem-height;
+$input-padding: $form-elem-padding;
+
+
 //Buttons
 $btn-color: $white;
+$btn-font-family: $form-elem-font-family;
 $btn-font-size: 24px;
-$btn-border-radius: 4px;
-$btn-text-shadow: 0px 1px $avocado;
+$btn-font-weight: $font-titillium-regular;
+$btn-border-width: $form-elem-border-width;
+$btn-border-style: $form-elem-border-style;
+$btn-border-radius: $form-elem-border-radius;
+$btn-text-shadow: 1px 1px $avocado;
 
 $btn-submit-border-color: $napier-green;
-$btn-submit-border: 1px solid $btn-submit-border-color;
-$btn-submit-border-radius: 4px;
+$btn-submit-border: $btn-border-width $btn-border-style $btn-submit-border-color;
+$btn-submit-border-radius: $btn-border-radius;
 $btn-submit-top-color: $june-bud;
 $btn-submit-bottom-color: $limerick;
 $btn-submit-color: $white;
-$btn-submit-font-size: 24px;
-$btn-submit-text-shadow: 1px 1px $avocado;
+$btn-submit-font-size: $btn-font-size;
+$btn-submit-text-shadow: $btn-text-shadow;
 
 $btn-reset-border-color: $red-brown;
-$btn-reset-border: 1px solid $btn-reset-border-color;
-$btn-reset-border-radius: 4px;
+$btn-reset-border: $btn-border-width $btn-border-style $btn-reset-border-color;
+$btn-reset-border-radius: $btn-border-radius;
 $btn-reset-top-color: $begonia;
 $btn-reset-bottom-color: $red-salsa;
 $btn-reset-color: $white;
-$btn-reset-font-size: 24px;
-$btn-reset-text-shadow: 1px 1px $avocado;
+$btn-reset-font-size: $btn-font-size;
+$btn-reset-text-shadow: $btn-text-shadow;
 
 //Checkboxes
 $chkbox-border-color: $lavender-gray;
-$chkbox-border: 1px solid $chkbox-border-color;
-$chkbox-border-radius: 4px;
+$chkbox-border: $form-elem-border-width $form-elem-border-style $chkbox-border-color;
+$chkbox-border-radius: $form-elem-border-radius;
 $chkbox-chked-color: $limerick;
-$chkbox-chked-radius: 4px;
+$chkbox-chked-radius: $form-elem-border-radius;
 
 //Labels
 $label-text-size: 17px;
-$label-text-color: $silver-chailce;
+$label-text-color: $form-elem-color;
+
+//Custom select
+$custom-select-font-family: $form-elem-font-family;
+$custom-select-font-size: $form-elem-font-size;
+$custom-select-font-weight: $form-elem-font-weight;
+$custom-select-color: $form-elem-color;
+$custom-select-border-color: $form-elem-border-color;
+$custom-select-border: $form-elem-border-width $form-elem-border-style $form-elem-border-color;
+$custom-select-border-radius: $form-elem-border-radius;
+$custom-select-gradient-top-color: $form-elem-gradient-top-color;
+$custom-select-gradient-top-color-active: $form-elem-gradient-top-color-active;
+$custom-select-gradient-bottom-color: $form-elem-gradient-bottom-color;
+$custom-select-gradient-bottom-color-active: $form-elem-gradient-bottom-color-active;
+$custom-select-width: $form-elem-width;
+$custom-select-height: $form-elem-height;
+$custom-select-padding: $form-elem-padding;
