@@ -71,7 +71,7 @@ const customSelect = (function(window, document){
 
           el.className = classes.join(' ');
         }
-    }
+    };
     
     const wrapTag = function (toWrap, wrapper) {
         wrapper = wrapper || document.createElement('div');
@@ -104,19 +104,16 @@ const customSelect = (function(window, document){
             removeClass(styleSelect[index], config.styledSelectActiveClass.substr(1));    
         });
 
-        console.log(list, config.optionsClassHidden.substr(1));
         forEach(list, function(index){
             addClass(list[index], config.optionsClassHidden.substr(1));
         });
     };
 
     const styledSelectClick = function(e){
-        console.log(e);
         e.stopPropagation();
         let styledSelect = e.target,
             list = styledSelect.nextElementSibling;
 
-        console.log(list);
         toggleClass(styledSelect, config.styledSelectActiveClass.substr(1));
         toggleClass(list, config.optionsClassHidden.substr(1));
     };
@@ -125,15 +122,20 @@ const customSelect = (function(window, document){
         
         e.stopPropagation();
         let item = e.target,
-            itemValue = item.attributes['rel'].value,
+            itemValue = item.attributes.rel.value,
             list = e.target.parentNode,
             styledSelect = list.previousElementSibling,
             select = styledSelect.previousElementSibling;
 
+        styledSelect.textContent = itemValue;
         select.value = itemValue;
-//        addClass(list, 'hide');
+
         hideStyledSelect(e);
     };
+    
+    const labelClick = function (e){
+        console.log(e);
+    }
     
     const createCustomSelect = function(){ 
         let selectSelectors = document.querySelectorAll(config.selectClass);
@@ -148,8 +150,13 @@ const customSelect = (function(window, document){
 
             wrapTag(thisSelect, customSelect);
             thisSelect.insertAdjacentHTML('afterend', '<div class="'+ config.styledSelectClass.substr(1) +'"></div>');
+                        
+            let styledSelect = thisSelect.nextElementSibling,
+                customSelectLabel = customSelect.previousElementSibling;
             
-            let styledSelect = thisSelect.nextElementSibling;
+            if(customSelect){
+                addEvent(customSelectLabel, 'click', labelClick);
+            }
             
             styledSelect.textContent = thisSelect.children[0].textContent;
             styledSelect.insertAdjacentHTML('afterend', '<ul class="'+ config.optionsClass.substr(1) +' '+ config.optionsClassHidden.substr(1) +'"></ul>');
@@ -168,6 +175,7 @@ const customSelect = (function(window, document){
             }
             
             let customSelectItems = customSelectOptions.children;
+                
             
             addEvent(customSelectItems, 'click', itemClick);           
         });

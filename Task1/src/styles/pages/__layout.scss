@@ -8,7 +8,7 @@ body {
 	// UNCOMMENT IF USING SASS-CORE FRAMEWORK AND PX FONT UNITS
 	//@include font-px(md);
     background: $main-bg-img no-repeat top center;
-    background-size: cover;
+    background-size: 100% 100%;
     font-family: $font-titillium;
 }
 
@@ -32,7 +32,6 @@ em {
 //}
 
 button {
-	
 	&:focus {
 		outline: none;
 	}
@@ -56,31 +55,55 @@ button {
 	}
 	
 }
+img{
+    max-width: 100%;
+}
+
 
 //layout
-
 .page_wrapper {
-	width: 1050px;
+	width: 100%;
 	max-width: 100%;
 	margin: 0 auto;
+    padding: 0 20px;
 	overflow: hidden;
 }
 
-.header__image{
-//    max-width: 429px;
-    display: block;
-    margin: 55px auto 0;
+.header{
+    margin: 55px auto 25px;
+    opacity: 0.34;
+    text-align: center;
 }
 
 .main-section{
-    display: flex;
-    justify-content: space-around;
+    width: 100%;
+}
+.main-section__column{
     width: 100%;
 }
 
-.main-section__column{
-    max-width: 420px;
-    width: 100%;
+.bottom-image-wrapper{
+    text-align: center;
+    opacity: 0.13;
+    margin-bottom: 50px;
+}
+
+//Media queries
+@media screen and (min-width: $desktop) {
+    .main-section{
+        display: flex;
+        justify-content: space-around;
+    }
+    .main-section__column{
+        max-width: 420px;
+    }
+}
+
+
+@media screen and (min-width: 1050px) {
+    .page_wrapper {
+	    width: 1050px;
+    } 
 }
 
 

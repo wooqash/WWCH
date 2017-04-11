@@ -83,3 +83,35 @@
         // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002ec4f2', endColorstr='#002ec4f2',GradientType=1 ); /* IE6-8 */
     }
 }
+
+@mixin triangle($size: 7px, $color: #ffffff, $direction: 'down'){
+    border: $size solid transparent;
+    @if $direction == 'down'{
+        border-color: $color transparent transparent transparent;
+    }
+    @else if $direction == 'up'{
+        border-color: transparent transparent $color transparent;
+    }
+    @else if $direction == 'right'{
+        border-color: transparent $color transparent transparent;
+    }
+    @else {
+        border-color: transparent transparent transparent $color;
+    }
+}
+
+@mixin ribbon($size: 7px, $color: #ffffff, $direction: 'down'){
+    border: $size solid transparent;
+    @if $direction == 'up'{
+        border-color: transparent $color $color $color;
+    }
+    @else if $direction == 'down'{
+        border-color: $color $color transparent $color;
+    }
+    @else if $direction == 'right'{
+        border-color: $color transparent $color $color;
+    }
+    @else {
+        border-color: $color $color $color transparent;
+    }
+}

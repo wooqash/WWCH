@@ -1,3 +1,9 @@
+.form-section{
+    margin-bottom: 40px;
+}
+.form-section.form-section_subscribe{
+    margin-bottom: 50px;
+}
 .form-section__title{
     margin-bottom: 18px;
     font-size: 32px;
@@ -7,6 +13,7 @@
     text-shadow: 2px 2px rgba($zinnwaldite-brown, 0.75);
 }
 
+//Form elements
 .form{
     padding: 20px;
     background-color: $white-smoke;
@@ -19,11 +26,15 @@
     position: relative;
     width: 100%;
     margin-bottom: 20px;
+    .form__btn_small:first-child{
+        margin-top: 0;
+    }
 }
 .form__field_last{
     margin-bottom: 0;
 }
 
+//Labels
 .form__label{
     position: absolute;
     top: 5px;
@@ -34,18 +45,18 @@
     border-right: 1px solid $gainsboro;
     cursor: pointer;
 }
-
 .form__label_checkbox{
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     border: 0;
     &:before{
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translate(0, -50%);
+        display: table;
         content: "";
         width: 25px;
         height: 25px;
@@ -63,6 +74,7 @@
         border-radius: $chkbox-chked-radius;
         content: "";
         opacity: 0;
+        transition: 0.2s ease-in opacity;
     }
 }
 
@@ -71,7 +83,7 @@
     color: $label-text-color;
 }
 .label__text_checkbox{
-    margin-left: 40px;
+    margin-left: 15px;
 }
 
 .label__icon{
@@ -93,10 +105,11 @@
 .label__icon_location{
     @include sprite($google-maps);
 }
-.label__icon_phone{
+.label__icon_mobile{
     @include sprite($phone);
 }
 
+//Input
 .form__input{
     position: relative;
     z-index: 1;
@@ -104,25 +117,74 @@
     height: $input-height;
     line-height: $input-height;
     padding: $input-padding;
-    border: 1px solid $lavender-gray;
-    border-radius: 4px;
-    @include vertical-linear-gradient($top-color: $ghost-white, $middle-color: null, $bottom-color: $anti-flash-white, $top-position: 0%, $middle-position: 50%, $bottom-position: 100%);
-    color: $silver-chailce;
-    font-family: $font-titillium;
-    font-size: 16px;
-    font-weight: $font-titillium-light;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    @include vertical-linear-gradient($top-color: $input-gradient-top-color, $bottom-color: $input-gradient-bottom-color, $top-position: 0%, $bottom-position: 100%);
+    color: $input-color;
+    font-family: $input-font-family;
+    font-size: $input-font-size;
+    font-weight: $input-font-weight;
     &::placeholder{
-        color: $silver-chailce;
+        color: $input-color;
+    }
+    &:active,
+    &:hover{
+        @include vertical-linear-gradient($top-color: $input-gradient-top-color-active, $bottom-color: $input-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+    }
+    &:focus,
+    &:active{
+        outline: $input-outline;
+        @include vertical-linear-gradient($top-color: $input-gradient-top-color-active, $bottom-color: $input-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
     }
 }
 
+//Textarea
+.form__textarea{
+    position: relative;
+    z-index: 1;
+    width: $textarea-width;
+    height: $textarea-height;
+    line-height: $textarea-line-height;
+    padding: $textarea-padding;
+    border: $textarea-border;
+    border-radius: $textarea-border-radius;
+    @include vertical-linear-gradient($top-color: $textarea-gradient-top-color, $bottom-color: $textarea-gradient-bottom-color, $top-position: 0%, $bottom-position: 100%);
+    color: $textarea-color;
+    font-family: $textarea-font-family;
+    font-size: $textarea-font-size;
+    font-weight: $textarea-font-weight;
+    &::placeholder{
+        color: $textarea-color;
+    }
+    &:active,
+    &:hover{
+        @include vertical-linear-gradient($top-color: $textarea-gradient-top-color-active, $bottom-color: $textarea-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+    }
+    &:focus,
+    &:active{
+        outline: $textarea-outline;
+        @include vertical-linear-gradient($top-color: $textarea-gradient-top-color-active, $bottom-color: $textarea-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+    }
+}
+
+//Checkbox
 .form__checkbox{
-    visibility: hidden;
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translate(0, -50%);
+    opacity: 0;
+    margin: 0;
     &:checked + label:after{
         opacity: 1;
     }
+    &:focus + .form__label_checkbox:before,
+    &:active + .form__label_checkbox:before{
+        border-width: 2px;
+    }
 }
 
+//Buttons
 .form__btn{
     width: 100%;
     height: 48px;
@@ -132,25 +194,60 @@
     font-weight: $btn-font-weight;
     text-shadow: $btn-text-shadow;
     cursor: pointer;
+    &:focus,
+    &:active{
+        border-width: 2px;
+        outline: 0;
+    }
+}
+.form__btn_small{
+    height: 40px;
+    margin-top: 20px;
+    font-size: $btn-small-font-size;
 }
 
 .form__btn_submit{
     border: $btn-submit-border;
     border-radius: $btn-submit-border-radius;
-    @include vertical-linear-gradient($top-color: $btn-submit-top-color, $middle-color: null, $bottom-color: $btn-submit-bottom-color, $top-position: 0%, $middle-position: 50%, $bottom-position: 100%);
+    @include vertical-linear-gradient($top-color: $btn-submit-gradient-top-color, $bottom-color: $btn-submit-gradient-bottom-color, $top-position: 0%, $bottom-position: 100%);
+    &:hover,
+    &:active{
+        @include vertical-linear-gradient($top-color: $btn-submit-gradient-top-color-active, $bottom-color: $btn-submit-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+    }
+    &.form__btn_disabled{
+        @include vertical-linear-gradient($top-color: $btn-submit-gradient-top-color-disabled, $bottom-color: $btn-submit-gradient-bottom-color-disabled, $top-position: 0%, $bottom-position: 100%);
+        cursor: default;
+        &:hover,
+        &:active{
+            @include vertical-linear-gradient($top-color: $btn-submit-gradient-top-color-disabled, $bottom-color: $btn-submit-gradient-bottom-color-disabled, $top-position: 0%, $bottom-position: 100%);
+        }
+    }
 }
-
 .form__btn_reset{
     border: $btn-reset-border;
     border-radius: $btn-reset-border-radius;
-    @include vertical-linear-gradient($top-color: $btn-reset-top-color, $middle-color: null, $bottom-color: $btn-reset-bottom-color, $top-position: 0%, $middle-position: 50%, $bottom-position: 100%);
+    @include vertical-linear-gradient($top-color: $btn-reset-gradient-top-color, $bottom-color: $btn-reset-gradient-bottom-color, $top-position: 0%, $bottom-position: 100%);
+    &:hover,
+    &:active{
+        @include vertical-linear-gradient($top-color: $btn-reset-gradient-top-color-active, $bottom-color: $btn-reset-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+    }
 }
 
+//Select
+.form__select{
+    &:focus + .custom-select__styled-select,
+    &:active + .custom-select__styled-select{
+        @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+        border: $input-outline;
+        border-width: 2px;
+        border-radius: $custom-select-border-radius;
+    }
+}
 .form__select_hidden{
-    display: none;
-    visibility: hidden;
+    opacity: 0;
 }
 
+//Custom select
 .custom-select{
     position: relative;
     display: inline-block;
@@ -164,7 +261,6 @@
     font-weight: $custom-select-font-weight;
     color: $custom-select-color;    
 }
-
 .custom-select__styled-select{
     position: absolute; 
     top: 0;
@@ -175,29 +271,35 @@
     border: $custom-select-border;
     border-radius: $custom-select-border-radius;
     padding: $custom-select-padding;
-//    @include transition(all 0.2s ease-in);
+    line-height: $custom-select-height;
     &:after {
-        content:"";
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        margin-top: -4px;
         width: 0;
         height: 0;
-        border: 7px solid transparent;
-        border-color: white transparent transparent transparent;
-        position: absolute;
-        top: 16px;
-        right: 10px;
+        content:"";
+        @include triangle($size: 8px, $color: $custom-select-triangle-color, $direction: 'down');
+        transform: rotate(0deg);
+        transition: 0.5s ease-in all;
     }
     &:hover {
         @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
     }
     &.custom-select__styled-select_active{
-        @include vertical-linear-gradient($top-color: darken($ghost-white, 2), $middle-color: null, $bottom-color: darken($anti-flash-white, 2), $top-position: 0%, $middle-position: 50%, $bottom-position: 100%);
+        @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+        border: $input-outline;
+        border-width: 2px;
+//        border-bottom: 0;
+        border-radius: $custom-select-active-border-radius;
         &:after{
-            top: 9px;
-            border-color: transparent transparent white transparent;  
+            top: 12px;
+            transform: rotate(-180deg);
         }
     }
+    
 }
-
 .customSelect__options{
     display: block; 
     position: absolute;
@@ -208,15 +310,21 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    border: $custom-select-border;
+    border-radius: $custom-select-options-border-radius;
+    border-top: 0;
     @include vertical-linear-gradient($top-color: $ghost-white, $middle-color: null, $bottom-color: $anti-flash-white, $top-position: 0%, $middle-position: 50%, $bottom-position: 100%);
+    transition: 0.5s ease-in top;
     li{
         margin: 0;
-        text-indent: 15px;
-        border-top: 1px solid white;
-//        @include transition(all 0.15s ease-in);
+        padding: $custom-select-padding;
+        border-top: $custom-select-border;
+        &:nth-child(2){
+            border-top: 0;
+        }
         &:hover {
             color: $silver-chailce;
-            @include vertical-linear-gradient($top-color: $ghost-white, $middle-color: null, $bottom-color: $anti-flash-white, $top-position: 0%, $middle-position: 50%, $bottom-position: 100%);
+            @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
         }
         &[rel="hide"] {
             display: none;
@@ -224,6 +332,18 @@
     }
     &.customSelect__options_hide{
         display: none;
+        top: 0;
     }
 }
 
+//Media queries
+@media screen and (min-width: $desktop) {
+    .form__field{
+        display: flex; 
+        justify-content: space-between;        
+    }
+    .form__btn_small{
+        max-width: 140px;
+        margin-top: 0;
+    }
+}
