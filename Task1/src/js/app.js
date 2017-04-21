@@ -8,38 +8,13 @@ function ready(fn) {
     }
 }
 
-const customSelect = (function(window, document){
-    const config = {
-        selectClass: '.form__select',
-        selectClassHidden: '.form__select_hidden',
-        customSelectWrapperClass: '.custom-select',
-        styledSelectClass: '.custom-select__styled-select',
-        styledSelectActiveClass: '.custom-select__styled-select_active',
-        optionsClass: '.customSelect__options',
-        optionsClassHidden: '.customSelect__options_hide'
-    };
-
-    const setSelectClass = function(className){
-        if(!className){return;}
-
-        if(className.indexOf('.') < 0){
-            className = '.' + className;
-        }
-        config.selectClass = className;
-
-        console.log(config.selectClass);
-    };
-
-
-
-
-    
+const utils = (function(window, document){
     const forEach = function(array, callback, scope) {
         for (var i = 0; i < array.length; i++) {
             callback.call(scope, i, array[i]); // passes back stuff we need
         }
     };
-    
+
     const addClass = function(el, className) {
         // console.log(el, className, el.classList);
         if (el.classList) {
@@ -48,7 +23,7 @@ const customSelect = (function(window, document){
             el.className += ' ' + className;
         }
     };
-    
+
     const removeClass = function(el, className) {
         if (el.classList) {
             el.classList.remove(className);
@@ -73,6 +48,13 @@ const customSelect = (function(window, document){
         }
     };
     
+    const hasClass = function(el, className){
+        if (el.classList)
+          el.classList.contains(className);
+        else
+          new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+    };
+
     const wrapTag = function (toWrap, wrapper) {
         wrapper = wrapper || document.createElement('div');
         if (toWrap.nextSibling) {
@@ -82,7 +64,7 @@ const customSelect = (function(window, document){
         }
         return wrapper.appendChild(toWrap);
     };
-    
+
     const addEvent = function(element, eventName, eventHandler, eventCapture) {
         var oldEventName = 'on' + eventName,
             useCapture = eventCapture ? eventCapture : false;
@@ -94,18 +76,112 @@ const customSelect = (function(window, document){
             element.attachEvent(oldEventName, eventHandler);
         }
     };
+    
+    const triggerEvent = function(element, eventName){
+        const event = document.createEvent('HTMLEvents');
+        event.initEvent(eventName, true, false);
+        element.dispatchEvent(event);
+    };
+    
+    return {
+        forEach: forEach,
+        addClass: addClass,
+        removeClass: removeClass,
+        toggleClass: toggleClass,
+        hasClass: hasClass,
+        wrapTag: wrapTag,
+        addEvent: addEvent,
+        triggerEvent: triggerEvent
+    };
+}(window, document));
 
+const forms = (function(window, document){
+    const onSubmitForm = function(e){
+        e.preventDefault();
+    };
+    
+    const handleForms = function(){
+        const formsElems = document.querySelectorAll('form');
+            
+        utils.forEach(formsElems, function(index, value){
+            let thisForm = value;
+            utils.addEvent(thisForm, 'submit', onSubmitForm);
+        });
+    };
+    
+    return {
+        handle: handleForms
+    };
+}(window, document));
+
+
+const customCheckbox = (function(window, document){
+    const handleFocus = function(e){
+        e.preventDefault();
+    };
+    
+    const handleKeys = function(e){
+        e.preventDefault();
+
+        if(e.keyCode === 13 || e.keyCode === 32){
+            if(e.target.checked){
+               e.target.checked = false; 
+            }
+            else{
+                e.target.checked = true;
+            }
+        }
+    };
+    
+    const handleCheckboxes = function(){
+        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        
+        utils.forEach(checkboxes, function (index, value) {
+            let thisCheckbox = value;
+            
+            utils.addEvent(thisCheckbox, 'focus', handleFocus);
+            utils.addEvent(thisCheckbox, 'keyup', handleKeys);
+        });
+    };
+    
+    return {
+        handle: handleCheckboxes
+    };
+}(window, document));
+
+const customSelect = (function(window, document){
+    const config = {
+        selectClass: '.form__select',
+        selectClassHidden: '.form__select_hidden',
+        customSelectWrapperClass: '.custom-select',
+        styledSelectClass: '.custom-select__styled-select',
+        styledSelectActiveClass: '.custom-select__styled-select_active',
+        optionsClass: '.customSelect__options',
+        optionsClassHidden: '.customSelect__options_hide'
+    };
+
+    const setSelectClass = function(className){
+        if(!className){return;}
+
+        if(className.indexOf('.') < 0){
+            className = '.' + className;
+        }
+        config.selectClass = className;
+
+        console.log(config.selectClass);
+    };
+    
     const hideStyledSelect = function(e){
         e.stopPropagation();
         const styleSelect = document.querySelectorAll(config.styledSelectClass),
               list = document.querySelectorAll(config.optionsClass);
 
-        forEach(styleSelect, function(index){
-            removeClass(styleSelect[index], config.styledSelectActiveClass.substr(1));    
+        utils.forEach(styleSelect, function(index){
+            utils.removeClass(styleSelect[index], config.styledSelectActiveClass.substr(1));    
         });
 
-        forEach(list, function(index){
-            addClass(list[index], config.optionsClassHidden.substr(1));
+        utils.forEach(list, function(index){
+            utils.addClass(list[index], config.optionsClassHidden.substr(1));
         });
     };
 
@@ -114,8 +190,10 @@ const customSelect = (function(window, document){
         let styledSelect = e.target,
             list = styledSelect.nextElementSibling;
 
-        toggleClass(styledSelect, config.styledSelectActiveClass.substr(1));
-        toggleClass(list, config.optionsClassHidden.substr(1));
+        utils.toggleClass(styledSelect, config.styledSelectActiveClass.substr(1));
+        utils.toggleClass(list, config.optionsClassHidden.substr(1));
+        console.log(list, list.children[1]);
+        list.children[1].focus;
     };
     
     const itemClick = function (e) {
@@ -129,38 +207,83 @@ const customSelect = (function(window, document){
 
         styledSelect.textContent = itemValue;
         select.value = itemValue;
+        
+//        document.querySelector(list)
+//        console.log(item.attributes['class']);
+//        utils.forEach(list.children, function(index, value){
+////            console.log(value.attributes['class']);
+//            if(value.attributes['class'] === 'active'){
+//                utils.removeClass(value, 'active');
+//            }
+////            console.log(value.);
+//        })
+        
+        utils.addClass(item, 'active');
 
         hideStyledSelect(e);
     };
     
     const labelClick = function (e){
         console.log(e);
-    }
+    };
+    
+//    const handleKeys = function(e){
+////        e.preventDefault();
+////        const styledSelect = e.target.nextElementSibling,
+////              options = styledSelect.nextElementSibling;
+////        
+////        console.log(e.keyCode);
+////        
+////        if(e.keyCode === 13 || e.keyCode === 32){
+////            utils.triggerEvent(styledSelect, 'click');
+//////            console.log(e);
+////            options.focus();
+////            
+////        }
+//        
+//        if(e.keyCode === 40){
+////            console.log('test');
+//            console.log(e, options);
+//            
+////            console.log(e.options[e.selectedIndex].value);
+//        }
+//        
+//    };
+//    
+//    const focusSelect = function(e){
+//        e.preventDefault();
+//        console.log('focus', e, e.nextElementSibling);
+//        
+//        
+//    };
     
     const createCustomSelect = function(){ 
         let selectSelectors = document.querySelectorAll(config.selectClass);
         
-        forEach(selectSelectors, function (index, value) {
+        utils.forEach(selectSelectors, function (index, value) {
             let thisSelect = value,
                 numberOfOptions = thisSelect.children.length,
                 customSelect = document.createElement('div');
+                
             
-            addClass(thisSelect, config.selectClassHidden.substr(1));
-            addClass(customSelect, config.customSelectWrapperClass.substr(1));
+//            utils.addEvent(thisSelect, 'focus', focusSelect);
+            
+            utils.addClass(thisSelect, config.selectClassHidden.substr(1));
+            utils.addClass(customSelect, config.customSelectWrapperClass.substr(1));
 
-            wrapTag(thisSelect, customSelect);
+            utils.wrapTag(thisSelect, customSelect);
             thisSelect.insertAdjacentHTML('afterend', '<div class="'+ config.styledSelectClass.substr(1) +'"></div>');
                         
             let styledSelect = thisSelect.nextElementSibling,
                 customSelectLabel = customSelect.previousElementSibling;
             
             if(customSelect){
-                addEvent(customSelectLabel, 'click', labelClick);
+                utils.addEvent(customSelectLabel, 'click', labelClick);
             }
             
             styledSelect.textContent = thisSelect.children[0].textContent;
             styledSelect.insertAdjacentHTML('afterend', '<ul class="'+ config.optionsClass.substr(1) +' '+ config.optionsClassHidden.substr(1) +'"></ul>');
-            addEvent(styledSelect, 'click', styledSelectClick);
+            utils.addEvent(styledSelect, 'click', styledSelectClick);
             
             let customSelectOptions = styledSelect.nextElementSibling;
             
@@ -169,30 +292,54 @@ const customSelect = (function(window, document){
                 
                 li.textContent = thisSelect.children[i].textContent;
                 li.setAttribute('rel', thisSelect.children[i].value);
-                addEvent(li, 'click', itemClick);
+                utils.addEvent(li, 'click', itemClick);
                 
                 customSelectOptions.appendChild(li);
             }
             
             let customSelectItems = customSelectOptions.children;
-                
+            customSelectItems[1].focus();
             
-            addEvent(customSelectItems, 'click', itemClick);           
+            utils.addEvent(thisSelect, 'keydown', function(e){
+//                e.preventDefault();
+//                if(e.keyCode !== 9 ){
+                    
+                    if(e.keyCode === 13 || e.keyCode === 32){
+                        e.preventDefault();
+                        utils.triggerEvent(styledSelect, 'click');
+//                        console.log(this.value, customSelectItems[1]);
+//                        $(customSelectItems[1]).focus();
+                        
+                    }
+                    if(e.keyCode === 40){
+                        console.log(this.value);
+                    }
+//                }
+            });
+//            utils.addEvent(customSelectItems, 'keydown', function(e){
+//                if(e.keyCode === 40){
+//                        console.log(e);
+//                    }
+//            });           
+            utils.addEvent(customSelectItems, 'click', itemClick);           
         });
         
-        addEvent(document.querySelector('body'), 'click', hideStyledSelect);
+        utils.addEvent(document.querySelector('body'), 'click', hideStyledSelect);
     };
     
     return {
         setSelectClass: setSelectClass,
         init: createCustomSelect
     };
-}(window, document));
+    }(window, document));
 
 
 function init() {
     // customSelect.setSelectClass('test');
     customSelect.init();
+    customCheckbox.handle();
+    forms.handle();
+    
 }
 
 ready(init);

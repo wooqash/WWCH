@@ -37,9 +37,10 @@
 //Labels
 .form__label{
     position: absolute;
-    top: 5px;
+    top: 50%;
     left: 0;
     z-index: 2;
+    transform: translateY(-50%);
     width: 60px;
     height: 30px;
     border-right: 1px solid $gainsboro;
@@ -48,8 +49,8 @@
 .form__label_checkbox{
     position: relative;
     top: 0;
-    left: 0;
-    width: 100%;
+    transform: translateY(0);
+    width: auto;
     height: auto;
     display: flex;
     justify-content: flex-start;
@@ -235,12 +236,17 @@
 
 //Select
 .form__select{
+    width: 100%;
+    min-height: $form-elem-height;
     &:focus + .custom-select__styled-select,
     &:active + .custom-select__styled-select{
         @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
         border: $input-outline;
         border-width: 2px;
         border-radius: $custom-select-border-radius;
+    }
+    option[value="hide"]{
+        display: none;
     }
 }
 .form__select_hidden{
@@ -253,8 +259,8 @@
     display: inline-block;
     cursor: pointer;
     width: $custom-select-width;
-    height: $custom-select-height;
-    line-height: $custom-select-height;
+    min-height: $custom-select-height;
+//    line-height: $custom-select-height;
     
     font-family: $custom-select-font-family;
     font-size: $custom-select-font-size;
@@ -262,16 +268,18 @@
     color: $custom-select-color;    
 }
 .custom-select__styled-select{
-    position: absolute; 
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+//    position: absolute; 
+//    top: 0;
+//    right: 0;
+//    bottom: 0;
+//    left: 0;
+    position: relative;
+    margin-top: (-1) * $custom-select-height;
     @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color, $bottom-color: $custom-select-gradient-bottom-color, $top-position: 0%, $bottom-position: 100%);    
     border: $custom-select-border;
     border-radius: $custom-select-border-radius;
     padding: $custom-select-padding;
-    line-height: $custom-select-height;
+    line-height: $custom-selectline-height;
     &:after {
         position: absolute;
         top: 50%;
@@ -294,7 +302,8 @@
 //        border-bottom: 0;
         border-radius: $custom-select-active-border-radius;
         &:after{
-            top: 12px;
+//            top: 12px;
+            margin-top: -12px;
             transform: rotate(-180deg);
         }
     }
@@ -322,7 +331,8 @@
         &:nth-child(2){
             border-top: 0;
         }
-        &:hover {
+        &:hover,
+        &:focus,{
             color: $silver-chailce;
             @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
         }
@@ -330,6 +340,9 @@
             display: none;
         }
     }
+//    &:focus{
+//        border: yellow;
+//    }
     &.customSelect__options_hide{
         display: none;
         top: 0;

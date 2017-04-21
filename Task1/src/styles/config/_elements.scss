@@ -13,7 +13,7 @@ $form-elem-gradient-bottom-color: $anti-flash-white;
 $form-elem-gradient-bottom-color-active: darken($anti-flash-white, 2);
 $form-elem-width: 100%;
 $form-elem-height: 40px;
-$form-elem-padding: 0 20px 0 80px;
+$form-elem-padding: 0 45px 0 80px;
 $form-elem-outline-color: $lavender-gray;
 $form-elem-outline-width: 1px;
 $form-elem-outline-style: solid;
@@ -120,6 +120,9 @@ $custom-select-gradient-bottom-color: $form-elem-gradient-bottom-color;
 $custom-select-gradient-bottom-color-active: $form-elem-gradient-bottom-color-active;
 $custom-select-width: $form-elem-width;
 $custom-select-height: $form-elem-height;
-$custom-select-padding: $form-elem-padding;
+$custom-selectline-height: 1.2;
+$custom-select-padding: 12px 45px 12px 80px;
 $custom-select-triangle-color: $gainsboro;
 $custom-select-options-border-radius: 0 0 4px 4px;
+
+
