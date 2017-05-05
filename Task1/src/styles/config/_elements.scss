@@ -80,8 +80,6 @@ $btn-submit-color: $white;
 $btn-submit-font-size: $btn-font-size;
 $btn-submit-text-shadow: $btn-text-shadow;
 
-
-
 $btn-reset-border-color: $red-brown;
 $btn-reset-border: $btn-border-width $btn-border-style $btn-reset-border-color;
 $btn-reset-border-radius: $btn-border-radius;
@@ -92,7 +90,6 @@ $btn-reset-gradient-bottom-color-active: darken($red-salsa, 2);
 $btn-reset-color: $white;
 $btn-reset-font-size: $btn-font-size;
 $btn-reset-text-shadow: $btn-text-shadow;
-
 
 //Checkboxes
 $chkbox-border-color: $lavender-gray;
@@ -106,23 +103,25 @@ $label-text-size: 17px;
 $label-text-color: $form-elem-color;
 
 //Custom select
+$custom-select-button-open-border-radius: 4px 4px 0 0;
 $custom-select-font-family: $form-elem-font-family;
 $custom-select-font-size: $form-elem-font-size;
 $custom-select-font-weight: $form-elem-font-weight;
 $custom-select-color: $form-elem-color;
 $custom-select-border-color: $form-elem-border-color;
 $custom-select-border: $form-elem-border-width $form-elem-border-style $form-elem-border-color;
-$custom-select-border-radius: $form-elem-border-radius;
-$custom-select-active-border-radius: 4px 4px 0 0;
+$custom-select-border-selected: 2px $form-elem-border-style $form-elem-border-color;
+$custom-select-border-radius: 0 0 4px 4px;
 $custom-select-gradient-top-color: $form-elem-gradient-top-color;
 $custom-select-gradient-top-color-active: $form-elem-gradient-top-color-active;
 $custom-select-gradient-bottom-color: $form-elem-gradient-bottom-color;
 $custom-select-gradient-bottom-color-active: $form-elem-gradient-bottom-color-active;
 $custom-select-width: $form-elem-width;
 $custom-select-height: $form-elem-height;
-$custom-selectline-height: 1.2;
-$custom-select-padding: 12px 45px 12px 80px;
+$custom-select-line-height: 40px;
+$custom-select-padding: 0px 45px 0px 80px;
 $custom-select-triangle-color: $gainsboro;
 $custom-select-options-border-radius: 0 0 4px 4px;
+$custom-select-outline-color: $input-outline-color;
 
 

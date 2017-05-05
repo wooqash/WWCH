@@ -16,10 +16,15 @@
     "url": "git+https://github.com/implico/frs-bundle-default.git"
   },
   "scripts": {
+    "rollup": "rollup -c config/rollup.config.js",
+    "build": "rollup && frs",
     "frs": "frs"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "rollup": "^0.41.6",
+    "rollup-plugin-babili": "^3.0.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0"
   }
 }

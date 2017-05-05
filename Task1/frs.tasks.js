@@ -10,6 +10,8 @@ module.exports = function(appData) {
       // remember to return a promise
     }
   }
+  
+ 
   //add the task as a dependency: build task, before images dependency
   appData.app.taskRegUtils.addDep('copy', 'build', 'images', true);*/
 

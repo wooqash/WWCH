@@ -235,52 +235,42 @@
 }
 
 //Select
-.form__select{
-    width: 100%;
-    min-height: $form-elem-height;
-    &:focus + .custom-select__styled-select,
-    &:active + .custom-select__styled-select{
-        @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
-        border: $input-outline;
-        border-width: 2px;
-        border-radius: $custom-select-border-radius;
-    }
-    option[value="hide"]{
-        display: none;
-    }
-}
 .form__select_hidden{
-    opacity: 0;
+    display: none;
 }
 
 //Custom select
-.custom-select{
+.custom-select-button{
     position: relative;
     display: inline-block;
     cursor: pointer;
-    width: $custom-select-width;
-    min-height: $custom-select-height;
-//    line-height: $custom-select-height;
-    
-    font-family: $custom-select-font-family;
-    font-size: $custom-select-font-size;
-    font-weight: $custom-select-font-weight;
-    color: $custom-select-color;    
-}
-.custom-select__styled-select{
-//    position: absolute; 
-//    top: 0;
-//    right: 0;
-//    bottom: 0;
-//    left: 0;
-    position: relative;
-    margin-top: (-1) * $custom-select-height;
-    @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color, $bottom-color: $custom-select-gradient-bottom-color, $top-position: 0%, $bottom-position: 100%);    
-    border: $custom-select-border;
-    border-radius: $custom-select-border-radius;
-    padding: $custom-select-padding;
-    line-height: $custom-selectline-height;
-    &:after {
+    width: $input-width;
+    height: $input-height;
+    line-height: $input-height;
+    padding: $input-padding;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    text-decoration: none;
+    &:focus,
+    &:active,
+    &.custom-select-button_open{
+        outline-color: $input-outline-color;
+        @include vertical-linear-gradient($top-color: $input-gradient-top-color-active, $bottom-color: $input-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+    }
+    &.custom-select-button_open{
+        border-radius: $custom-select-button-open-border-radius;
+        .custom-select-button__icon{
+            transform: rotate(180deg);
+            margin-top: -14px;
+        }
+    }
+    &__status{
+        font-family: $custom-select-font-family;
+        font-size: $custom-select-font-size;
+        font-weight: $custom-select-font-weight;
+        color: $custom-select-color;
+    }
+    &__icon{
         position: absolute;
         top: 50%;
         right: 15px;
@@ -292,60 +282,54 @@
         transform: rotate(0deg);
         transition: 0.5s ease-in all;
     }
-    &:hover {
-        @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
-    }
-    &.custom-select__styled-select_active{
-        @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
-        border: $input-outline;
-        border-width: 2px;
-//        border-bottom: 0;
-        border-radius: $custom-select-active-border-radius;
-        &:after{
-//            top: 12px;
-            margin-top: -12px;
-            transform: rotate(-180deg);
-        }
-    }
-    
 }
-.customSelect__options{
-    display: block; 
+.custom-select-menu{
+    display: block;
     position: absolute;
-    top: 100%;
-    right: 0;
+    z-index: 3;
+    width: $custom-select-width;
+    top: $input-height;
     left: 0;
-    z-index: 999;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    border: $custom-select-border;
-    border-radius: $custom-select-options-border-radius;
-    border-top: 0;
-    @include vertical-linear-gradient($top-color: $ghost-white, $middle-color: null, $bottom-color: $anti-flash-white, $top-position: 0%, $middle-position: 50%, $bottom-position: 100%);
-    transition: 0.5s ease-in top;
-    li{
-        margin: 0;
-        padding: $custom-select-padding;
-        border-top: $custom-select-border;
-        &:nth-child(2){
-            border-top: 0;
-        }
-        &:hover,
-        &:focus,{
-            color: $silver-chailce;
-            @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
-        }
-        &[rel="hide"] {
-            display: none;
-        }
-    }
-//    &:focus{
-//        border: yellow;
-//    }
-    &.customSelect__options_hide{
+    @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color, $bottom-color: $custom-select-gradient-bottom-color, $top-position: 0%, $bottom-position: 100%);    
+    border-radius: $custom-select-border-radius;
+    &_hidden{
         display: none;
-        top: 0;
+    }
+    li{
+        height: $custom-select-height;
+        line-height: $custom-select-line-height;
+        border: $custom-select-border;
+        border-top: 0;
+        overflow: hidden;
+        box-sizing: content-box;
+        &:first-child{
+            border-top-width: 1px;
+            &.custom-select-menu__item_selected{
+                border-top-width: 1px;
+            }
+        }
+        &:last-child{
+            border-radius: $custom-select-border-radius;
+        }
+        &.custom-select-menu__item_selected{
+            @include vertical-linear-gradient($top-color: $custom-select-gradient-top-color-active, $bottom-color: $custom-select-gradient-bottom-color-active, $top-position: 0%, $bottom-position: 100%);
+            border-width: 2px;
+            border-top: $custom-select-border-selected;
+            height: $custom-select-height;
+        }
+        &+ .custom-select-menu__item_selected{
+            border-top: $custom-select-border;
+        }
+        a{
+            display: block;
+            padding: $custom-select-padding;
+            outline-color: $input-outline-color;
+            font-family: $custom-select-font-family;
+            font-size: $custom-select-font-size;
+            font-weight: $custom-select-font-weight;
+            color: $custom-select-color;
+            text-decoration: none;
+        }
     }
 }
 
