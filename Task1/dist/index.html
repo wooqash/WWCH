@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Weekly Webdev Chanllange No 1</title>
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <meta name="description" content="Weekly Webdev Chanllange No 1" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="user-scalable=0,width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+<!--    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600&amp;subset=latin-ext" rel="stylesheet">-->
+</head>
+<body>
+    <div class="page_wrapper">
+        <header class="header">
+            <h1 class="header__title"><img src="img/top-logo.png" alt="Masterlab creative logo"></h1>
+        </header>
+        <main class="main-section">
+            <div class="main-section__column">
+                <section class="form-section form-section_register">
+                    <h2 class="form-section__title">Register Form</h2>
+                    <form action="#" class="form">
+                        <div class="form__field">
+                            <label for="registerUsername" class="form__label"><span class="label__icon label__icon_user"></span></label>
+                            <input id="registerUsername" name="registerUsername" type="text" class="form__input" placeholder="Username">
+                        </div>
+                        <div class="form__field">
+                            <label for="registerPwd" class="form__label"><span class="label__icon label__icon_pwd"></span></label>
+                            <input id="registerPwd" name="registerPwd" type="password" class="form__input" placeholder="Password">
+                        </div>
+                        <div class="form__field">
+                            <label for="registerConfirmPwd" class="form__label"><span class="label__icon label__icon_pwd"></span></label>
+                            <input id="registerConfirmPwd" name="registerConfirmPwd" type="password" class="form__input" placeholder="Confirm Password">
+                        </div>
+                        <div class="form__field">
+                            <label for="registerEmail" class="form__label"><span class="label__icon label__icon_email"></span></label>
+                            <input id="registerEmail" name="registerEmail" type="email" class="form__input" placeholder="Email">
+                        </div>
+                        <div class="form__field">
+                            <label for="registerLocation" class="form__label"><span class="label__icon label__icon_location"></span></label>
+                            <select name="registerLocation" id="registerLocation" class="form__select form__select_location">
+                                <option value="Poland">Poland</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Russia">Russia</option>
+                                <option value="USA">USA</option>
+                            </select>
+                        </div>
+                        <div class="form__field">
+                            <input id="registerTerms" name="registerTerms" type="checkbox" class="form__checkbox">
+                            <label for="registerTerms" class="form__label form__label_checkbox"><span class="label__text label__text_checkbox">I have read and accept the terms of use.</span></label>
+                        </div>
+                        <div class="form__field form__field_last">
+                            <button id="registerSignUp" type="submit" class="form__btn form__btn_submit">Sign up</button>
+                        </div>
+                    </form>
+                </section>
+                <section class="form-section form-section_send-mail">
+                    <h2 class="form-section__title">Send Email</h2>
+                    <form action="#" class="form">
+                        <div class="form__field">
+                            <label for="sendEmailUsername" class="form__label"><span class="label__icon label__icon_user"></span></label>
+                            <input id="sendEmailUsername" name="sendEmailUsername" type="text" class="form__input" placeholder="Username">
+                        </div>
+                        <div class="form__field">
+                            <label for="sendEmailEmail" class="form__label"><span class="label__icon label__icon_email"></span></label>
+                            <input id="sendEmailEmail" name="sendEmailEmail" type="email" class="form__input" placeholder="Email">
+                        </div>
+                        <div class="form__field">
+                            <textarea name="sendEmailMessage" id="sendEmailMessage" class="form__textarea" placeholder="Type your message..."></textarea>
+                        </div>
+                        <div class="form__field">
+                            <input id="sendEmailCopyToEmail" name="sendEmailCopyToEmail" type="checkbox" class="form__checkbox">
+                            <label for="sendEmailCopyToEmail" class="form__label form__label_checkbox"><span class="label__text label__text_checkbox">Send a copy to my Email</span></label>
+                        </div>
+                        <div class="form__field form__field_last">
+                            <button id="sendEmailSendEmail" type="submit" class="form__btn form__btn_submit">Send Email</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="main-section__column">
+                <section class="form-section form-section_sign-in">
+                    <h2 class="form-section__title">Sign In Form</h2>
+                    <form action="#" class="form">
+                        <div class="form__field">
+                            <label for="signInUsername" class="form__label"><span class="label__icon label__icon_user"></span></label>
+                            <input id="signInUsername" name="signInUsername" type="text" class="form__input" placeholder="Username">
+                        </div>
+                        <div class="form__field">
+                            <label for="signInPwd" class="form__label"><span class="label__icon label__icon_pwd"></span></label>
+                            <input id="signInPwd" name="registerPwd" type="password" class="form__input" placeholder="Password">
+                        </div>
+                        <div class="form__field form__field_last">
+                            <input id="signInCopyToEmail" name="signInCopyToEmail" type="checkbox" class="form__checkbox">
+                            <label for="signInCopyToEmail" class="form__label form__label_checkbox"><span class="label__text label__text_checkbox">Remember Me</span></label>
+                            <button id="signInSendEmail" type="submit" class="form__btn form__btn_submit form__btn_small">Sign in</button>
+                        </div>
+                    </form>
+                </section>
+                <section class="form-section form-section_recover">
+                    <h2 class="form-section__title">Recover Form</h2>
+                    <form action="#" class="form">
+                        <div class="form__field">
+                            <label for="recoverEmail" class="form__label"><span class="label__icon label__icon_email"></span></label>
+                            <input id="recoverEmail" name="recoverEmail" type="email" class="form__input" placeholder="Enter your Email">
+                        </div>
+                        <div class="form__field">
+                            <label for="recoverMobile" class="form__label"><span class="label__icon label__icon_mobile"></span></label>
+                            <input id="recoverMobile" name="recoverMobile" type="tel" class="form__input" placeholder="Enter your Phone number">
+                        </div>
+                        <div class="form__field form__field_last">
+                            <button id="recoverSend" type="submit" class="form__btn form__btn_submit form__btn_small">Send</button>
+                            <button id="recoverDone" type="submit" disabled="disabled" class="form__btn form__btn_submit form__btn_small form__btn_disabled">Done</button>
+                        </div>
+                    </form>
+                </section>
+                <section class="form-section form-section_subscribe">
+                    <h2 class="form-section__title">Subscribe Form</h2>
+                    <form action="#" class="form">
+                        <div class="form__field">
+                            <label for="subscribeEmail" class="form__label"><span class="label__icon label__icon_email"></span></label>
+                            <input id="subscribeEmail" name="subscribeEmail" type="email" class="form__input" placeholder="Enter your Email">
+                        </div>
+                        <div class="form__field form__field_last">
+                            <button id="subscribeSend" type="submit" class="form__btn form__btn_submit form__btn_small">Subscribe</button>
+                            <button id="subscribeDone" type="submit" class="form__btn form__btn_reset form__btn_small">No, thanks</button>
+                        </div>
+                    </form>
+                </section>
+                <div class="bottom-image-wrapper"><img src="img/bottom-logo.png" alt="Masterlab creative logo"></div>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
