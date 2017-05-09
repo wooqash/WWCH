@@ -1,6 +1,6 @@
 'use strict';
 
-import utils from 'utils';
+import * as utils from './utils';
 
 function ready(fn) {
     if (document.readyState !== 'loading') {
@@ -9,7 +9,6 @@ function ready(fn) {
         document.addEventListener('DOMContentLoaded', fn);
     }
 }
-
 
 const forms = (function(window, document){
     

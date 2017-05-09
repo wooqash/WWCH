@@ -1,33 +1,33 @@
 'use strict';
 
-const utils = (function(window, document){
-    const forEach = function(array, callback, scope) {
+//export default function(){
+function forEach(array, callback, scope) {
         for (var i = 0; i < array.length; i++) {
             callback.call(scope, i, array[i]); // passes back stuff we need
         }
-    };
+    }
     
-    const insertAfter = function(el, referenceNode) {
+function insertAfter(el, referenceNode) {
         referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
-    };
+    }
 
-    const addClass = function(el, className) {
+function addClass(el, className) {
         if (el.classList) {
             el.classList.add(className);
         } else {
             el.className += ' ' + className;
         }
-    };
+    }
 
-    const removeClass = function(el, className) {
+function removeClass(el, className) {
         if (el.classList) {
             el.classList.remove(className);
         } else {
             el.className += ' ';
         }
-    };
+    }
 
-    const toggleClass = function(el, className){
+function toggleClass(el, className){
         if (el.classList) {
           el.classList.toggle(className);
         } else {
@@ -41,9 +41,9 @@ const utils = (function(window, document){
 
           el.className = classes.join(' ');
         }
-    };
+    }
     
-    const hasClass = function(el, className){
+function hasClass(el, className){
         if (el.classList){
             if(el.classList.contains(className)){
                 return true;
@@ -56,9 +56,9 @@ const utils = (function(window, document){
         }
             
         return false;
-    };
+    }
 
-    const wrapTag = function (toWrap, wrapper) {
+function wrapTag (toWrap, wrapper) {
         wrapper = wrapper || document.createElement('div');
         if (toWrap.nextSibling) {
             toWrap.parentNode.insertBefore(wrapper, toWrap.nextSibling);
@@ -66,9 +66,9 @@ const utils = (function(window, document){
             toWrap.parentNode.appendChild(wrapper);
         }
         return wrapper.appendChild(toWrap);
-    };
+    }
 
-    const addEvent = function(element, eventName, eventHandler, eventCapture) {
+function addEvent(element, eventName, eventHandler, eventCapture) {
         var oldEventName = 'on' + eventName,
             useCapture = eventCapture ? eventCapture : false;
 
@@ -78,9 +78,9 @@ const utils = (function(window, document){
         } else if (element.attachEvent) {
             element.attachEvent(oldEventName, eventHandler);
         }
-    };
+    }
     
-    const triggerEvent = function(element, eventType){
+function triggerEvent(element, eventType){
         if('createEvent' in document){
             const event = document.createEvent('HTMLEvents');
             event.initEvent(eventType, false, true);
@@ -91,25 +91,25 @@ const utils = (function(window, document){
             event.eventType = eventType;
             element.fireEvent('on'+event.eventType, event);
         }        
-    };
+    }
     
-    const checkType = function (type, obj) {
+function isTypeOf(type, obj) {
         var clas = Object.prototype.toString.call(obj).slice(8, -1).toLocaleLowerCase();
         return obj !== undefined && obj !== null && clas === type.toLocaleLowerCase();
-    };
+    }
     
-    return {
-        forEach: forEach,
-        insertAfter: insertAfter,
-        addClass: addClass,
-        removeClass: removeClass,
-        toggleClass: toggleClass,
-        hasClass: hasClass,
-        wrapTag: wrapTag,
-        addEvent: addEvent,
-        triggerEvent: triggerEvent,
-        isTypeOf: checkType
-    };
-}(window, document));
-
-export default utils;
+    
+export {forEach, insertAfter, addClass, removeClass, toggleClass, hasClass, wrapTag, addEvent, triggerEvent, isTypeOf };
+//    return {
+//        forEach: forEach,
+//        insertAfter: insertAfter,
+//        addClass: addClass,
+//        removeClass: removeClass,
+//        toggleClass: toggleClass,
+//        hasClass: hasClass,
+//        wrapTag: wrapTag,
+//        addEvent: addEvent,
+//        triggerEvent: triggerEvent,
+//        isTypeOf: checkType
+//    };
+//}

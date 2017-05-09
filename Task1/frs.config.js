@@ -95,6 +95,27 @@ module.exports = function(config, dirs, appData) {
   // config.lint.options.parserOptions.ecmaVersion = 5;
 //    config.js.babel.options.presets = [dirs.rootModules + 'babel-preset-es2015'];
 //    config.js.babel.options.plugins = [dirs.rootModules + 'babel-plugin-transform-es2015-modules-systemjs'];
+    
+//    var rollup = require('gulp-better-rollup');
+//    
+//    config.js.inject.rollup = function(stream){
+//        
+//        // stream: current stream
+//        stream = stream.pipe(rollup({
+//            format: 'umd',
+//            plugins: [
+//            babel({
+//              exclude: 'node_modules/**',
+//            })]
+//        }));
+//
+//        // return stream;   //if you don't want to cancel the original step
+//
+//        // but we want to cancel the default step (cssnano)
+//        return this.cancel(stream);
+//    };
+//    
+//    console.log(config.js.inject);
 
 
   //handy comps references
@@ -104,10 +125,10 @@ module.exports = function(config, dirs, appData) {
 //    config.js.webpack.resolve.modules = [dirs.src.js.main];
 //    
 //    comps.utils = {
-//        filename: false,
-//        app: ['utils.js', 'app.js']
-////        webpack: ['src/js/**/*.js']
-//    }
+//        filename: 'app',
+//        app: ['utils.js', 'app.js'],
+//        webpack: ['src/js/**/*.js']
+//    };
 
   //main JS: change filename to script.js
   // compMain.filename = 'script.js';
@@ -253,4 +274,4 @@ module.exports = function(config, dirs, appData) {
   //disable images dir cleaning
   // config.clean.inject.images = false;
 
-}
+};
