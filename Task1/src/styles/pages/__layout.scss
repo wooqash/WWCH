@@ -78,7 +78,8 @@ img{
 .main-section{
     width: 100%;
 }
-.main-section__column{
+.main-section__column-left,
+.main-section__column-right{
     width: 100%;
 }
 
@@ -98,10 +99,17 @@ img{
         display: flex;
         justify-content: space-around;
     }
-    .main-section__column{
+    .main-section__column-left,
+	.main-section__column-right{
         max-width: 420px;
     }
-}
+    .main-section__column-left .form-section{
+    	margin-bottom: 20px;
+    }
+    .main-section__column-right .form-section{
+    	margin-bottom: 50px;
+    }
+} 
 
 @media screen and (min-width: 1050px) {
     .page_wrapper {

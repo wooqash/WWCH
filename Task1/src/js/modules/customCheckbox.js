@@ -25,7 +25,6 @@ function handleKeys(e){
             e.target.checked = true;
         }
     }
-    e.preventDefault();
 }
 
 function initCheckboxes(element){
