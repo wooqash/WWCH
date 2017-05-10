@@ -18,9 +18,8 @@
   "scripts": {
     "frs": "frs"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
-    "gulp-better-rollup": "^1.1.1",
-    "rollup-plugin-babel": "^2.7.1"
   }
 }

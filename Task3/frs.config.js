@@ -93,35 +93,12 @@ module.exports = function(config, dirs, appData) {
   //disable Babel
   // config.js.inject.babel = false;
   // config.lint.options.parserOptions.ecmaVersion = 5;
-//    config.js.babel.options.presets = [dirs.rootModules + 'babel-preset-es2015'];
-//    config.js.babel.options.plugins = [dirs.rootModules + 'babel-plugin-transform-es2015-modules-systemjs'];
-    
-//    var rollup = require('gulp-better-rollup');
-//    
-//    config.js.inject.rollup = function(stream){
-//        
-//        // stream: current stream
-//        stream = stream.pipe(rollup({
-//            format: 'umd',
-//            plugins: [
-//            babel({
-//              exclude: 'node_modules/**',
-//            })]
-//        }));
-//
-//        // return stream;   //if you don't want to cancel the original step
-//
-//        // but we want to cancel the default step (cssnano)
-//        return this.cancel(stream);
-//    };
-//    
-//    console.log(config.js.inject);
 
 
   //handy comps references
   var comps = config.js.comps,
       compMain = comps.main;
-    
+
   //main JS: change filename to script.js
   // compMain.filename = 'script.js';
 
@@ -137,9 +114,9 @@ module.exports = function(config, dirs, appData) {
   // }
 
   //switch to webpack (ES2015 imports)
-   compMain.filename = 'app';  //set entry filename (default extension if does not contain a dot: js) - possible a glob, preferred single to watch separately
-   compMain.webpack = ['src/js/**/*.{js}']; // watched files (remove jsx if not needed)
-   config.lint.options.parserOptions.sourceType = 'module';
+  // compMain.filename = 'app';  //set entry filename (default extension if does not contain a dot: js) - possible a glob, preferred single to watch separately
+  // compMain.webpack = ['app/**/*.{js,jsx}']; // watched files (remove jsx if not needed)
+  // config.lint.options.parserOptions.sourceType = 'module';
 
   //add a comp (full parameters)
   // comps.comp_name = {
@@ -171,6 +148,7 @@ module.exports = function(config, dirs, appData) {
 
   //   watch: true  //not needed, watch blocked only if false
   // }
+
 
 
   /********************
@@ -265,4 +243,4 @@ module.exports = function(config, dirs, appData) {
   //disable images dir cleaning
   // config.clean.inject.images = false;
 
-};
+}

@@ -114,41 +114,60 @@ module.exports = function(config, dirs, appData) {
   // }
 
   //switch to webpack (ES2015 imports)
-  // compMain.filename = 'app';  //set entry filename (default extension if does not contain a dot: js) - possible a glob, preferred single to watch separately
-  // compMain.webpack = ['app/**/*.{js,jsx}']; // watched files (remove jsx if not needed)
-  // config.lint.options.parserOptions.sourceType = 'module';
+//   compMain.filename = 'app';  //set entry filename (default extension if does not contain a dot: js) - possible a glob, preferred single to watch separately
+//   compMain.webpack = ['/**/*.{js,jsx}']; // watched files (remove jsx if not needed)
+//   config.lint.options.parserOptions.sourceType = 'module';
 
   //add a comp (full parameters)
-  // comps.comp_name = {
-  //   filename: 'app',      //set to false to not produce any output file (for sub-comps); if not set, defaults to comp id
-  //                         //.js extension added automatically unless the name contains a dot
-  //                         //for webpack: enter a filename or glob, e.g. ['app', 'app2'] (.js extension appended automatically if dot not found)
+//   comps.comp_name = {
+//     filename: 'app',      //set to false to not produce any output file (for sub-comps); if not set, defaults to comp id
+//                           //.js extension added automatically unless the name contains a dot
+//                           //for webpack: enter a filename or glob, e.g. ['app', 'app2'] (.js extension appended automatically if dot not found)
+//
+//     bower: ['**/*.js'],   //set only name of the package
+//     vendor: ['**/*.js'],  //path relative to the appropriate directory
+//     app: ['**/*.js'],     //path relative to the appropriate directory
+//     webpack: false,       //disabled by default
+//     // webpack: ['app/**/*.js'],  //example webpack use, disables bower, vendor and app props
+//
+//     //set prioritized paths (does not apply for webpack)
+//     priority: {
+//       vendor: [],
+//       app: []
+//     },
+//
+//     //set other comp ids to include (does not apply for webpack)
+//     dependencies: [],
+//
+//     //set comps to exclude all loaded scripts in other comps, e.g.
+//     //excludeIn: ['comp1', 'comp2'] //excluded in selected comps
+//     //excludeIn: true   //excluded in all other comps
+//     //excludeIn: false  //no exclusion
+//     //does not apply for webpack
+//     excludeIn: false,
+//
+//     watch: true  //not needed, watch blocked only if false
+//   }
 
-  //   bower: ['**/*.js'],   //set only name of the package
-  //   vendor: ['**/*.js'],  //path relative to the appropriate directory
-  //   app: ['**/*.js'],     //path relative to the appropriate directory
-  //   webpack: false,       //disabled by default
-  //   // webpack: ['app/**/*.js'],  //example webpack use, disables bower, vendor and app props
-
-  //   //set prioritized paths (does not apply for webpack)
-  //   priority: {
-  //     vendor: [],
-  //     app: []
-  //   },
-
-  //   //set other comp ids to include (does not apply for webpack)
-  //   dependencies: [],
-
-  //   //set comps to exclude all loaded scripts in other comps, e.g.
-  //   //excludeIn: ['comp1', 'comp2'] //excluded in selected comps
-  //   //excludeIn: true   //excluded in all other comps
-  //   //excludeIn: false  //no exclusion
-  //   //does not apply for webpack
-  //   excludeIn: false,
-
-  //   watch: true  //not needed, watch blocked only if false
-  // }
-
+//    var rollup = require('gulp-better-rollup');
+//    var babel = require('rollup-plugin-babel');
+//    
+//    config.js.inject.rollup = function(stream){
+//        
+//        // stream: current stream
+//        stream = stream.pipe(rollup({
+//            format: 'umd',
+//            plugins: [
+//            babel({
+//              exclude: 'node_modules/**',
+//            })]
+//        }));
+//
+//        // return stream;   //if you don't want to cancel the original step
+//
+//        // but we want to cancel the default step (cssnano)
+//        return this.cancel(stream);
+//    };
 
 
   /********************
