@@ -1,7 +1,7 @@
 #Weekly Webdev Challange -  1
 --------------------------------
 
-This is my own solution to **Weekly Webdev Challange** (**challange 1**). More information you can find either on [facebook group](https://www.facebook.com/groups/940002776068923/) or on [google drive](https://drive.google.com/drive/folders/0Bw2hu70L5Ye_VkhvdDZhN3haSlE.In near future I will try to do all tasks and publish my solutions for them. It'd be great to hear a comment about this code from you. 
+This is my own solution to **Weekly Webdev Challange** (**challange 1**). More information you can find either on [facebook group](https://www.facebook.com/groups/940002776068923/) or on [google drive](https://drive.google.com/drive/folders/0Bw2hu70L5Ye_VkhvdDZhN3haSlE). In near future I will try to do all tasks and publish my solutions for them. It'd be great to hear a comment about this code from you. 
 
 
 ----------
