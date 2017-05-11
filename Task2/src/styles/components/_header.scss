@@ -1,0 +1,32 @@
+.navbar{
+    min-height: 150px;
+    
+}
+.navbar-default{
+    background-color: transparent;
+//    border: 0;
+}
+
+@media (min-width: 768px){
+    .navbar-nav{
+        display: table;
+        min-height: 150px;
+        & > li{
+            display: table-cell;
+            vertical-align: middle;
+            float: none;
+        }
+    }
+    .navbar-header{
+        display: table;
+        min-height: 150px;
+    }
+    .navbar-brand{
+        float: none;
+        padding: 0;
+        height: auto;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    
+}
