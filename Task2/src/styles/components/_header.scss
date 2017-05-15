@@ -1,13 +1,61 @@
+$menu-font-size: 16px;
+$menu-font-weight: $font-raleway-bold;
+$menu-text-color: $raisin-black;
+$menu-text-style: uppercase;
+$menu-dash-color: $portland-orange;
+$menu-burger-border-color: $transparent;
+$menu-burger-bars-border-color: $raisin-black;
+$menu-burger-bars-border-color: $raisin-black;
+$menu-burger-active-bg: $portland-orange;
+$menu-active-bg-color: $ghost-white;
+
+
 .navbar{
-    min-height: 150px;
-    
+    min-height: 80px;
+}
+.navbar-toggle{
+    margin-top: 20px;
 }
 .navbar-default{
     background-color: transparent;
 //    border: 0;
+    .navbar-nav > li > a{
+        color: $menu-text-color;
+    }
+    .navbar-toggle {
+        border-color: $menu-burger-border-color;
+        &:hover,
+        &:focus{
+            background-color: $menu-burger-active-bg;
+        }
+        .icon-bar{
+            background-color: $menu-burger-bars-border-color;
+        }
+    }
+    .navbar-collapse{
+        border-color: $transparent; //reset bootstrap style;
+//        background-color: $menu-active-bg-color;
+    }
+}
+.navbar-brand{
+    height: auto;
+}
+.navbar-nav{
+    & > li > a{
+        
+    }
+}
+.navbar-nav__link{
+    font-size: $menu-font-size;
+    font-weight: $menu-font-weight;
+    text-transform: $menu-text-style;
+    text-align: center;
 }
 
 @media (min-width: 768px){
+    .navbar{
+        min-height: 150px;
+    }
     .navbar-nav{
         display: table;
         min-height: 150px;
@@ -15,6 +63,10 @@
             display: table-cell;
             vertical-align: middle;
             float: none;
+            & > a{
+                padding: 0;
+                margin: 0 15px;
+            }
         }
     }
     .navbar-header{
@@ -24,9 +76,25 @@
     .navbar-brand{
         float: none;
         padding: 0;
-        height: auto;
+//        height: auto;
         display: table-cell;
         vertical-align: middle;
     }
-    
+    .navbar-nav__link{
+        position: relative;
+        &:before{
+            content: " ";
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: $menu-dash-color;
+            transition: width 0.5s;
+        }
+        &.active,
+        &:hover:before{
+            width: 100%;
+        }
+    }
 }

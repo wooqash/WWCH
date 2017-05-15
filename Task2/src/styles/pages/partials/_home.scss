@@ -1,0 +1,59 @@
+$home-section-bg-color: $ghost-white;
+$home-section-bg-img: url('../img/home-bg.jpg');
+$home-section-bg: $home-section-bg-color $home-section-bg-img no-repeat bottom center;
+
+.section--home{
+    position: relative;
+//    min-height: 100vh;
+    background-color: $home-section-bg-color;
+//    background-size: contain;
+//    padding: 30vh 0 35vh;
+//    padding: 150px 0;
+    padding: 100px 0 0;
+    text-align: center;
+    .section__title{
+        font-size: unit-vw(60px, mobile);
+        font-weight: $font-raleway-heavy;
+    }
+    .section__text{
+        max-width: 385px;
+        margin: 0 auto 35px;
+    }
+}
+.scroll-icon{
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+}
+
+@media (min-width: 768px){
+    .section--home{
+//        padding: 30vh 0 35vh;
+//        background: $home-section-bg;
+//        background-size: cover;
+        text-align: left;
+        .section__title{
+            font-size: 60px;
+        }
+        .section__text{
+            margin: 0 0 35px;
+        }
+    }
+}
+@media (min-width: 992px){
+    .section--home{
+        .section__text{
+            max-width: initial;
+        }
+    }
+}
+
+@media (min-width: 1200px){
+    .section--home{
+        background-size: contain;
+    }
+    .scroll-icon{
+        bottom: 70px;
+    }
+}

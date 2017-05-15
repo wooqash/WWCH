@@ -1,0 +1,22 @@
+$about-section-bg-color: $amazonite;
+$about-section-text-color: $white;
+$about-section-bg-img: url('../img/about-bg.png');
+$about-section-bg: $about-section-bg-color $about-section-bg-img no-repeat center left;
+
+.section--about{
+//    min-height: 700px;
+    color: $about-section-text-color;
+    background-color: $about-section-bg-color;
+    text-align: center;
+}
+@media (min-width: 768px){
+    .section--about{
+//        background: $about-section-bg;
+//        background-size: 50% auto;
+        min-height: 700px;
+//        .row{
+//            display: flex;
+//            align-items: center;
+//        }
+    }
+}
