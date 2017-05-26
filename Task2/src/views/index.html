@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
     <meta charset="utf-8" />
-    <title></title>
+    <title>Weekly Webdev Chanllange No 2</title>
     <link rel="shortcut icon" href="img/favicon.ico" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -19,158 +19,252 @@
 </head>
 
 <body>
-<!--    <div id="layout-main-wrap">-->
+    <header class="header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#Home" title="Go to Homepage">
+                        <img alt="Cahee logo" src="img/cahee-logo.png">
+                    </a>
+                </div>
 
-        <header class="header">
-            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#Home">
-                            <img alt="Cahee logo" src="img/cahee-logo.png">
-                        </a>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Home">Home</a></li>
+                        <li class="navbar-nav__item"><a class="navbar-nav__link" href="#About">About</a></li>
+                        <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Services">Services</a></li>
+                        <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Gallery">Gallery</a></li>
+                        <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Blog">Blog</a></li>
+                        <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Contact">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <main class="main">
+        <section id="Home" class="section section--home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="section__title">Fresh life</h2>
+                        <p class="section__text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                        <button class="btn btn--orange home__btn" type="submit">Get free now</button>
                     </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Home">Home</a></li>
-                            <li class="navbar-nav__item"><a class="navbar-nav__link" href="#About">About</a></li>
-                            <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Services">Services</a></li>
-                            <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Gallery">Gallery</a></li>
-                            <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Blog">Blog</a></li>
-                            <li class="navbar-nav__item"><a class="navbar-nav__link" href="#Contact">Contact</a></li>
+                    <div class="col-md-8">
+                        <img src="img/home-bg2.jpg" alt="" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+            <img src="../img/scroll-icon.png" alt="" class="scroll-icon">
+        </section>
+        <section id="About" class="section section--about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-push-6">
+                        <h2 class="section__title">About Us</h2>
+                        <p class="section__text">Abore Cahee magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                        <p class="section__text">Nim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                    </div>
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <img src="img/about-bg.png" alt="" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Services" class="section section--services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-push-6">
+                        <h2 class="section__title">Our services</h2>
+                        <img src="img/services-bg.png" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <ul class="services">
+                            <li class="services__item">
+                                <a href="#" class="services__link" title="Click to see Online Shopping">Online Shopping<i class="service__icon service__icon--online-shopping"></i></a>
+                            </li>
+                            <li class="services__item">
+                                <a href="#" class="services__link" title="Click to see Quality Product">Quality Product<i class="service__icon service__icon--quality-product"></i></a>
+                            </li>
+                            <li class="services__item">
+                                <a href="#" class="services__link" title="Click to see Domestic & International Delivery">Domestic & International Delivery<i class="service__icon service__icon--domestic-international-delivery"></i></a>
+                            </li>
+                            <li class="services__item">
+                                <a href="#" class="services__link" title="Click to see Well Organized">Well Organized<i class="service__icon service__icon--well-organized"></i></a>
+                            </li>
                         </ul>
                     </div>
-                    <!-- /.navbar-collapse -->
                 </div>
-                <!-- /.container-fluid -->
-            </nav>
-        </header>
-
-        <main class="main">
-            <section id="Home" class="section section--home">
-                <div class="container">
+            </div>
+        </section>
+        <section id="Gallery" class="section section--gallery">
+            <div class="container">
+                <div class="section__intro">
                     <div class="row">
-                        <div class="col-md-4">
-                            <h2 class="section__title">Fresh life</h2>
-                            <p class="section__text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                            <button class="btn btn--orange" type="submit">Get free now</button>
-                        </div>
-                        <div class="col-md-8">
-                            <img src="img/home-bg2.jpg" alt="" class="img-responsive">
-                        </div>
-                    </div>
-                </div>
-                <img src="../img/scroll-icon.png" alt="" class="scroll-icon">
-            </section>
-            <section id="About" class="section section--about">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-push-6">
-                            <h2 class="section__title">About Us</h2>
-                            <p class="section__text">Abore Cahee magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
-                            <p class="section__text">Nim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-                        </div>
-                        <div class="col-sm-6 col-sm-pull-6">
-                            <img src="img/about-bg.png" alt="" class="img-responsive">
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="Services" class="section section--services">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-push-6">
-                            <h2 class="section__title">Our services</h2>
-                            <img src="img/services-bg.png" alt="" class="img-responsive">
-                        </div>
-                        <div class="col-sm-6 col-sm-pull-6">
-                            <ul class="services">
-                                <li class="services__item">
-                                    <a href="#" class="services__link" title="Click to see Online Shopping">Online Shopping<i class="service__icon service__icon--online-shopping"></i></a>
-                                </li>
-                                <li class="services__item">
-                                    <a href="#" class="services__link" title="Click to see Quality Product">Quality Product<i class="service__icon service__icon--quality-product"></i></a>
-                                </li>
-                                <li class="services__item">
-                                    <a href="#" class="services__link" title="Click to see Domestic & International Delivery">Domestic & International Delivery<i class="service__icon service__icon--domestic-international-delivery"></i></a>
-                                </li>
-                                <li class="services__item">
-                                    <a href="#" class="services__link" title="Click to see Well Organized">Well Organized<i class="service__icon service__icon--well-organized"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="Gallery" class="section section--gallery">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
+                        <div class="col-md-6 col-md-offset-3 text-center">
                             <h2 class="section__title">Gallery</h2>
                             <p class="section__text">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section id="Subscriptions" class="section section--subscriptions">
-                <div class="container">
+                <div class="gallery">
                     <div class="row">
-                        <div class="col-sm-8">
-                            <h2 class="section__title">Subscribe To Us</h2>
-                            <p class="section__text">Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        <div class="col-sm-8 gallery__item">
+                            <img src="img/gallery-img1.jpg" alt="Image with plate and peach" class="img-responsive">
                         </div>
-                    </div>
-                </div>
-            </section>
-            <section id="Blog" class="section section--blog">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <h2 class="section__title">Blog</h2>
-                            <p class="section__text">Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="col-sm-12 gallery__item">
+                                    <img src="img/gallery-img2.jpg" alt="" class="img-responsive">
+                                </div>
+                                <div class="col-sm-12 gallery__item">
+                                    <img src="img/gallery-img3.jpg" alt="" class="img-responsive">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">1</div>
-                        <div class="col-sm-4">2</div>
-                        <div class="col-sm-4">3</div>
-                    </div>
-                </div>
-            </section>
-            <section id="Contact" class="section section--contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-4">
-                            <h2 class="section__title">Contact</h2>
-                            <p class="section__text">For new projects, ideas, business or anything you'd like to discuss, contact with me!</p>
+                        <div class="col-sm-6 gallery__item">
+                            <img src="img/gallery-img4.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="col-sm-6 gallery__item">
+                            <img src="img/gallery-img5.jpg" alt="" class="img-responsive">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">1</div>
-                        <div class="col-sm-6">2</div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">&copy; 2015 Company. All right reserved.</div>
-                    <div class="col-sm-2 col-sm-offset-2"><img alt="Cahee logo" src="img/cahee-footer-logo.png"></div>
-                    <div class="col-sm-3 col-sm-offset-2">Made with love by Auskteez</div>
+                    <button class="btn btn--navy-blue gallery__btn" type="submit">View more</button>
                 </div>
             </div>
-        </footer>
-<!--    </div>-->
+        </section>
+        <section id="Subscriptions" class="section section--subscriptions">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="section__title">Subscribe To Us</h2>
+                        <p class="section__text">Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <form class="subscribe-form form-inline">
+                            <div class="form-group">
+                                <label for="subscribeInput" class="sr-only" aria-label="Your email address">Your email address</label>
+                                <input type="text" class="form-control" id="subscribeInput" placeholder="Your email address...">
+                            </div>
+                            <button type="submit" class="btn btn--green subscribe-form__btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Blog" class="section section--blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2 class="section__title">Blog</h2>
+                        <p class="section__text">Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                    </div>
+                </div>
+                <div class="row blog-list">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="blog-intro">
+                            <img src="img/blog-day1.jpg" alt="A glass of green smoothie" class="blog-intro__image">
+                            <div class="blog-intro__date">
+                                <span class="date__day">20</span>
+                                <span class="date__month">Nov</span>
+                            </div>
+                            <div class="blog-intro__title">Green Smoothies: Too Much of a Good Thing?</div>
+                            <div class="blog-intro__author">By Auskteez - 2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="blog-intro">
+                            <img src="img/blog-day2.jpg" alt="Plate with pea cream" class="blog-intro__image">
+                            <div class="blog-intro__date">
+                                <span class="date__day">14</span>
+                                <span class="date__month">Nov</span>
+                            </div>
+                            <div class="blog-intro__title">Growing Food and a “Thirst” for Innovation</div>
+                            <div class="blog-intro__author">By Auskteez - 3 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="blog-intro">
+                            <img src="img/blog-day3.jpg" alt="4  boxes with raspberries" class="blog-intro__image">
+                            <div class="blog-intro__date">
+                                <span class="date__day">10</span>
+                                <span class="date__month">Nov</span>
+                            </div>
+                            <div class="blog-intro__title">Pesticides & Food: What You Need to Know</div>
+                            <div class="blog-intro__author">By Auskteez - 6 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn--red blog__btn" type="submit">view more</button>
+            </div>
+        </section>
+        <section id="Contact" class="section section--contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h2 class="section__title">Contact</h2>
+                        <p class="section__text">For new projects, ideas, business or anything you'd like to discuss, contact with me!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="ContactForm" class="form--contact">
+                            <div class="form-group">
+                                <label for="ContactFormName" class="sr-only" aria-label="Your name">Your name</label>
+                                <input type="text" class="form-control" id="ContactFormName" placeholder="Your name...">
+                            </div>
+                            <div class="form-group">
+                                <label for="ContactFormEmail" class="sr-only" aria-label="Your email address">Your email</label>
+                                <input type="email" class="form-control" id="ContactFormEmail" placeholder="Your email...">
+                            </div>
+                            <div class="form-group">
+                                <label for="ContactFormPhone" class="sr-only" aria-label="Your phone number">Your phone number</label>
+                                <input type="email" class="form-control" id="ContactFormPhone" placeholder="Your phone number...">
+                            </div>
+                            <div class="form-group">
+                                <label for="ContactFormMessage" class="sr-only" aria-label="Your message">Your message</label>
+                                <textarea class="form-control" rows="12" id="ContactFormMessage" placeholder="Your message..."></textarea>
+                            </div>
+<!--                                <button type="submit" class="btn btn-default">Send invitation</button>-->
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="contact-info">
+                            <dt class="contact-info__heading">Address</dt>
+                            <dd class="contact-info__info">123 City name, Street, City, Country</dd>
+                            <dt class="contact-info__heading">Email</dt>
+                            <dd class="contact-info__info">cahee@domain.com</dd>
+                            <dt class="contact-info__heading">Phone</dt>
+                            <dd class="contact-info__info">+012 345 6789</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer__copyrights col-md-4">&copy; 2015 Company. All right reserved.</div>
+                <div class="footer__logo col-md-4"><a href="#Home" title="Go to Homepage"><img alt="Cahee logo" src="img/cahee-footer-logo.png"></a></div>
+                <div class="footer__author col-md-4">Made with <span class="footer__marker">love</span> by Auskteez</div>
+            </div>
+        </div>
+    </footer>
     <script src="js/app.js"></script>
 </body>
 

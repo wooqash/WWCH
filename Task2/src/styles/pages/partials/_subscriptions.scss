@@ -1,6 +1,83 @@
 $subscriptions-section-bg-color: $white;
+$subscriptions-section-bg: $white url('../img/subscriptions-bg2.jpg') no-repeat bottom center;
+$subscriptions-form-border: 1px solid $raisin-black;
 
-.section_subscriptions{
-    min-height: 500px;
-    background-color: $subscriptions-section-bg-color;
+
+.section--subscriptions{
+    background: $subscriptions-section-bg;
+    background-size: contain;
+    .section__title{
+        font-size: unit-vw(40px, mobile);
+        font-weight: $font-raleway-bold;
+    }
+    .section__text{
+        margin-bottom: 35px;
+    }
+}
+
+.form-inline {
+    width: 100%;
+    .form-control{
+        width: 100%;//570px;
+        height: 55px;
+        border-radius: 0;
+        border: $subscriptions-form-border;
+    }
+}
+.subscribe-form{
+    .form-group{
+        width: 100%;
+    }
+}
+.subscribe-form__btn{
+    padding: 17px 20px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+@media only screen and (min-width: 480px){
+    .section--subscriptions{
+        background-position: bottom center;
+    }
+    
+}
+
+@media only screen and (min-width: 768px){
+    .section--subscriptions{
+        min-height: 500px;
+        background-position: bottom 40% right -60%;
+        background-size: 60%;
+        .section__title{
+            font-size: 40px;
+            text-align: left;
+        }
+        .section__text{
+            max-width: 70%;
+            text-align: left;
+        }
+    }
+    .subscribe-form{
+        .form-group{
+            width: calc(100% - 235px);
+            display: inline-block;
+        }
+    }
+    .subscribe-form__btn{
+        margin: 0 0 0 30px;
+        max-width: 200px;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .section--subscriptions{
+        background-position: bottom 40% right;
+        background-size: auto;
+        .section__text{
+            max-width: initial;
+        }
+    }  
+}
+
+@media only screen and (min-width: 1500px){
+    .section--subscriptions{
+        background-position: bottom 40% right 20%;
+    }
 }

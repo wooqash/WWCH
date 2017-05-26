@@ -1,3 +1,6 @@
+$box-shadow: 0 2px 5px 0 rgba($black,0.5);
+
+
 html {
 	font-family: $font-raleway;//Arial, sans-serif, Tahoma;
     font-weight: $font-raleway-light;
@@ -63,17 +66,21 @@ button {
     align-items: center;
     min-height: 100vh;
     padding: 80px 0;
-}
-
-.section__title{
-    font-size: unit-vw(90px, mobile);
-    font-weight: $font-raleway-bold;
-    margin: 0;
-    margin-bottom: 35px;
+    &__title{
+        font-size: unit-vw(90px, mobile);
+        font-weight: $font-raleway-bold;
+        margin: 0;
+        margin-bottom: 35px;
+        text-align: center;
+    }
+    &__text{
+        text-align: center;
+    }
 }
 
 
 .btn{
+//    display: block;
     width: 100%;
     max-width: 200px;
     font-size: 20px;
@@ -83,13 +90,13 @@ button {
     border-radius: 0;
     padding: 20px;
     line-height: 1;
-    box-shadow: 0 2px 5px 0 rgba($black,0.5);
+    box-shadow: $box-shadow;
     &:hover,
     &:focus{
         color: $white;
     }
     &:active{
-        box-shadow: 0 2px 5px 0 rgba($black,0.5);
+        box-shadow: $box-shadow;
     }
     &:focus{
         outline: 0;
@@ -129,7 +136,7 @@ button {
 //        padding-top: 150px;
     }
     .section{
-        .row{
+        &>.row{
             display: flex;
             align-items: center;
         }
