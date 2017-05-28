@@ -17,7 +17,8 @@ $menu-active-bg-color: $ghost-white;
     margin-top: 20px;
 }
 .navbar-default{
-    background-color: transparent;
+//    background-color: transparent;
+    background: $menu-active-bg-color;
 //    border: 0;
     .navbar-nav > li > a{
         color: $menu-text-color;
@@ -34,7 +35,10 @@ $menu-active-bg-color: $ghost-white;
     }
     .navbar-collapse{
         border-color: $transparent; //reset bootstrap style;
-//        background-color: $menu-active-bg-color;
+//        
+        &.in{
+            background-color: $menu-active-bg-color;
+        }
     }
 }
 .navbar-brand{

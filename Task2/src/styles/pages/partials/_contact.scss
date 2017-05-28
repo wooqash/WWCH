@@ -12,9 +12,10 @@ $form-input-padding: 20px;
 .section--contact{
     background: $contact-section-bg no-repeat top center;
     background-size: cover;
-}
-.section__text{
-    margin: 0 0 50px;
+    .section__text{
+        margin: 0 auto 50px;
+        max-width: 370px;
+    }
 }
 
 .contact-info{

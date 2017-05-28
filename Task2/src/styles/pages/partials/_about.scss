@@ -7,9 +7,36 @@ $about-section-bg: $about-section-bg-color $about-section-bg-img no-repeat cente
     color: $about-section-text-color;
     background-color: $about-section-bg-color;
     text-align: center;
+    .section__title,
+    .section__text{
+        max-width: 465px;
+        margin: 0 auto 35px;
+    }
 }
-@media (min-width: 768px){
+@media only screen and (min-width: 768px){
     .section--about{
         min-height: 700px;
+        
+    }
+    
+}
+@media only screen and (min-width: 992px){
+    .section--about{
+        .row{
+            display: flex;
+            align-items: center;
+        }
+        .section__title,
+        .section__text{
+            text-align: left;
+        }
+    }
+}
+@media only screen and (min-width: 1200px){
+    .section--about{
+        .section__title,
+        .section__text{
+            padding-left: 70px;
+        }
     }
 }

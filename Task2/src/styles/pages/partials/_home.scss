@@ -23,17 +23,22 @@ $home-section-bg: $home-section-bg-color $home-section-bg-img no-repeat bottom c
     transform: translateX(-50%);
 }
 
-@media (min-width: 768px){
+@media only screen and (min-width: 768px){
     .section--home{
+        padding: 200px 0 0;
         .section__title{
             font-size: 60px;
         }
     }
 }
-@media (min-width: 992px){
+@media only screen and (min-width: 992px){
     .section--home{
         text-align: left;
-        .section__text{
+        .row{
+            display: flex;
+            align-items: center;
+        }
+        .section__title{
             max-width: initial;
             text-align: left;
         }
@@ -44,9 +49,10 @@ $home-section-bg: $home-section-bg-color $home-section-bg-img no-repeat bottom c
     }
 }
 
-@media (min-width: 1200px){
+@media only screen and (min-width: 1200px){
     .section--home{
         background-size: contain;
+        padding: 150px 0 0;   
     }
     .scroll-icon{
         bottom: 70px;
