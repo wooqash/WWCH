@@ -78,6 +78,42 @@ button {
     }
 }
 
+.form-group{
+//    margin: 0 0 30px;
+    position: relative;
+    .error-msg{
+        position: absolute;
+        left: 15px;
+        bottom: -25px;
+        color: $red;
+        font-size: 14px;
+        display: none;
+    }
+}
+
+.has-error{
+    input.form-control,
+    textarea.form-control{
+        border: 1px solid $red;
+        color: $red;
+    }
+    .form-control{
+        margin-bottom: 30px;
+        @include input-placeholder {
+            color: $red;
+        }
+        &:focus{
+            border: 1px solid $red;
+            color: $red;
+        }
+    }
+    .error-msg{
+        display: block; 
+    }
+    
+    
+}
+
 
 .btn{
 //    display: block;
@@ -146,6 +182,8 @@ button {
 //        font-size: 90px;
         font-size: unit-vw(90px, tablet);
     }
+    
+    
 }
 @media (min-width: 1200px){
     .container {
