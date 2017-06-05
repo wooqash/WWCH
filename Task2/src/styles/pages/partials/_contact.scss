@@ -58,6 +58,10 @@ $form-input-padding: 20px;
                 border-left-color: $red;
             }
         }
+        .error-msg{
+            position: static;
+            margin-bottom: 10px;
+        }
     }
 }
 

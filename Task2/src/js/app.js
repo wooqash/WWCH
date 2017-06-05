@@ -2,6 +2,11 @@
 
 $(document).ready(function(){
     
+    const settings = {
+        'navHeight': 0
+    };
+    
+    $(window).on('resize', resizePage).triggerHandler('resize');
     
     $('#SubscribeEmail, #ContactFormEmail').on('blur', function(){
         const elem = this; 
@@ -29,6 +34,13 @@ $(document).ready(function(){
         const elem = this; 
         const group = $(elem).parent();
         const isValid = validatePhoneNumb(elem);
+        handleErrors(isValid, group);
+    });
+    
+    $('#ContactFormMessage').on('blur', function(){
+        const elem = this; 
+        const group = $(elem).parent();
+        const isValid = validateMsg(elem);
         handleErrors(isValid, group);
     });
     
@@ -65,7 +77,7 @@ $(document).ready(function(){
             element = element.target;
         }
         const nameRegExp = /[a-z\sąśźćęńłóĄŚŹĆÓŁŃĘ\-]+/ig;
-        const name = $(element).val();
+        const name = $(element).val().trim();
 
         let status = false;
 
@@ -93,5 +105,76 @@ $(document).ready(function(){
         console.log(status);
         return status;
     }
+    
+    function validateMsg(element){
+        if(element.hasOwnProperty('target')){
+            element = element.target;
+        }
+        const messageRegExp = /[ąśźćęńłó\-\_\!\(\)\+\^\~\`\@\#\$\%\&\*\/\'\"\;\:\{\}\[\]\|\,\.\?\\\w\d\s]+/ig;
+        const message = $(element).val().trim();
+
+        let status = false;
+
+        if(messageRegExp.test(message)){
+            status = true;
+        }
+
+        console.log(status);
+        return status;
+    }
+    
+    function resizePage(){
+        setNavHeight();
+    }
+    
+    function setNavHeight(){
+        settings.navHeight =  $('.navbar').height();
+    }
+    
+    function smoothScroll(event){
+        // On-page links
+        if (
+            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+            && 
+            location.hostname == this.hostname
+        ) {
+            // Figure out element to scroll to
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            // Does a scroll target exist?
+            
+            if($('.navbar-collapse').hasClass('in')){
+                $('.navbar-toggle').trigger('click');
+            }
+            
+            
+            if (target.length) {
+                // Only prevent default if animation is actually gonna happen
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top - settings.navHeight
+                }, 1000, function() {
+                    // Callback after animation
+                    // Must change focus!
+                    var $target = $(target);
+                    $target.focus();
+                    if ($target.is(":focus")) { // Checking if the target was focused
+                        return false;
+                    } else {
+                        $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                        $target.focus(); // Set focus again
+                    };
+                });
+            }
+        }
+    }
+    
+    // Select all links with hashes
+    $('a[href*="#"]')
+    // Remove links that don't actually link to anything
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .off('click')
+        .on('click', smoothScroll);
 });
 
