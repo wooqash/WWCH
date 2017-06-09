@@ -78,19 +78,21 @@
         transition: 0.2s ease-in opacity;
     }
 }
+.form__label_textbox{
+		border: 0;
+}
 
 .label__text{
     font-size: $label-text-size;
     color: $label-text-color;
+		position: absolute;
+		left: -9999px;
 }
 .label__text_checkbox{
     margin-left: 15px;
+		position: static;
 }
 
-.label__text{
-	position: absolute;
-	left: -9999px;
-}
 .label__icon{
     position: absolute;
     top: 50%;
