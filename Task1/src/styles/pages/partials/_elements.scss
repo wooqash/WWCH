@@ -87,6 +87,10 @@
     margin-left: 15px;
 }
 
+.label__text{
+	position: absolute;
+	left: -9999px;
+}
 .label__icon{
     position: absolute;
     top: 50%;
