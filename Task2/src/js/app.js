@@ -3,7 +3,8 @@
 $(document).ready(function(){
     
     const settings = {
-        'navHeight': 0
+        'navHeight': 0,
+        'galleryRows': 4
     };
     
     $(window).on('resize', resizePage).triggerHandler('resize');
@@ -42,6 +43,22 @@ $(document).ready(function(){
         const group = $(elem).parent();
         const isValid = validateMsg(elem);
         handleErrors(isValid, group);
+    });
+    
+    $('#GalleryViewMore').on('click', function(){
+       let rows = $('.gallery > .row').length;
+        if(rows < settings.galleryRows){
+            if(rows % 2 === 0){
+                $('<div class="row"><div class="col-sm-8 gallery__item"><img src="http://lorempixel.com/770/550/food/" alt="Image with plate and peach" class="img-responsive"></div><div class="col-sm-4"><div class="row"><div class="col-sm-12 gallery__item"><img src="http://lorempixel.com/370/260/sports/" alt="" class="img-responsive"></div><div class="col-sm-12 gallery__item"><img src="http://lorempixel.com/370/260/nature/" alt="" class="img-responsive"></div></div></div></div>').insertBefore('#GalleryViewMore');
+            }
+            else{
+                $('<div class="row"><div class="col-sm-6 gallery__item"><img src="http://lorempixel.com/570/400/food/" alt="" class="img-responsive"></div><div class="col-sm-6 gallery__item"><img src="http://lorempixel.com/570/400/sports/" alt="" class="img-responsive"></div></div>').insertBefore('#GalleryViewMore');
+            }
+        }
+    });
+    
+    $('#GalleryViewMore').on('click', function(){
+        
     });
     
     function handleErrors(status, group){
