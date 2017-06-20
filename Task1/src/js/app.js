@@ -4,6 +4,6 @@ import * as customCheckbox from './modules/customCheckbox';
 import * as customSelect from './modules/customSelect';
 
 (function(){
-	customCheckbox.init();
+		customCheckbox.init();
     customSelect.init();
 }());
