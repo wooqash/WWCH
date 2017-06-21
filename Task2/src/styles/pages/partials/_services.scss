@@ -1,0 +1,92 @@
+$services-section-bg-color: $maya-blue;
+$services-section-title-color: $white;
+$services-item-bg-color: $white;
+$services-item-border-color: $spanish-gray;
+$services-item-color: $raisin-black;
+$services-item-font-weight: $font-raleway-bold;
+
+.section--services{
+    min-height: 790px;
+    background: $services-section-bg-color;
+    .section__title{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        color: $services-section-title-color;
+    }
+}
+.section__column--right{
+    .img-responsive{
+        margin: 0 auto;
+    }
+}
+.services{
+    margin-top: 80px;
+    &__item{
+        max-width: 400px;
+        height: 100px;
+        background: $services-item-bg-color;
+        margin: 0 auto 20px;
+        box-shadow: 0px 4px 5px 2px rgba($black, 0.5);
+    }
+    &__link{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 32.5% 0 7.5%;
+        text-align: center;
+        color: $services-item-color;
+        font-weight: $services-item-font-weight;
+        font-size: 20px;
+        text-decoration: none;
+        &:hover,
+        &:focus{
+            text-decoration: none;   
+            color: inherit;
+        }
+        &:focus{
+            outline: 2px solid $services-section-bg-color;
+        }
+        &:after{
+            position: absolute;
+            right: 25%;
+            top: 0;
+            content: "";
+            display: block;
+            height: 100%;
+            width: 1px;
+            background: $services-item-border-color;
+        }
+    }   
+}
+.service__icon{
+    position: absolute;
+    right: 18.25%;
+    top: 50%;
+    transform: translate(81.25%, -50%);
+    display: block;
+    &--online-shopping{
+        @include sprite($icon-online-shopping);
+    }
+    &--quality-product{
+        @include sprite($icon-quality-product);
+    }
+    &--domestic-international-delivery{
+        @include sprite($icon-domestic-international-delivery);
+    }
+    &--well-organized{
+        @include sprite($icon-well-organized);
+    }
+}
+
+@media only screen and (min-width: 992px){
+    .services{
+        margin-top: 0;
+    }
+}

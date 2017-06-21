@@ -1,0 +1,60 @@
+$home-section-bg-color: $ghost-white;
+$home-section-bg-img: url('../img/home-bg.jpg');
+$home-section-bg: $home-section-bg-color $home-section-bg-img no-repeat bottom center;
+
+.section--home{
+    position: relative;
+    background-color: $home-section-bg-color;
+    padding: 100px 0 0;
+    text-align: center;
+    .section__title{
+        font-size: unit-vw(60px, mobile);
+        font-weight: $font-raleway-heavy;
+    }
+    .section__text{
+        max-width: 385px;
+        margin: 0 auto 35px;
+    }
+}
+.scroll-icon{
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+}
+
+@media only screen and (min-width: 768px){
+    .section--home{
+        padding: 200px 0 0;
+        .section__title{
+            font-size: 60px;
+        }
+    }
+}
+@media only screen and (min-width: 992px){
+    .section--home{
+        text-align: left;
+        .row{
+            display: flex;
+            align-items: center;
+        }
+        .section__title{
+            max-width: initial;
+            text-align: left;
+        }
+        .section__text{
+            text-align: left;
+            margin: 0 0 35px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .section--home{
+        background-size: contain;
+        padding: 150px 0 0;   
+    }
+    .scroll-icon{
+        bottom: 70px;
+    }
+}

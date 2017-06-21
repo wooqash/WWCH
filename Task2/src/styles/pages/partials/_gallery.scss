@@ -1,0 +1,31 @@
+$gallery-section-bg-color: $banana-yellow;
+
+.section--gallery{
+    background-color: $gallery-section-bg-color;
+    .section__text{
+        margin: 0 auto;
+        max-width: 580px;
+    }
+}
+.section__intro{
+    margin-bottom: 45px;
+}
+.gallery__item{
+    margin: 0 auto 30px;
+    .img-responsive{
+        margin: 0 auto;
+        box-shadow: $box-shadow;
+    }
+}
+.gallery__btn{ 
+    display: block;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px){
+    .section--gallery{
+        .section__text{
+            margin: 0 auto;
+        }
+    }
+}

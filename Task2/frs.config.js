@@ -118,6 +118,8 @@ module.exports = function(config, dirs, appData) {
 //   compMain.webpack = ['/**/*.{js,jsx}']; // watched files (remove jsx if not needed)
 //   config.lint.options.parserOptions.sourceType = 'module';
 
+//    compMain.bower = ['bootstrap-sass/**/*.js', 'jquery/**/*.js'];
+    
   //add a comp (full parameters)
 //   comps.comp_name = {
 //     filename: 'app',      //set to false to not produce any output file (for sub-comps); if not set, defaults to comp id

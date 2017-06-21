@@ -1,0 +1,79 @@
+$contact-section-bg: url('../img/contact-bg.jpg');
+$form-input-color: $white;
+$form-input-bg-color: $turquoise-serf;
+$form-input-bg: rgba($form-input-bg-color, 0.5);
+$form-input-bg-active: rgba($form-input-bg-color, 1);
+$form-input-font-size: 15px;
+$form-input-border: 0;
+$form-input-border-active: 5px solid $bdazzled-blue;
+$form-input-border-radius: 0;
+$form-input-padding: 20px;
+
+.section--contact{
+    background: $contact-section-bg no-repeat top center;
+    background-size: cover;
+    .section__text{
+        margin: 0 auto 50px;
+        max-width: 370px;
+    }
+}
+
+.contact-info{
+    text-align: center;
+    &__heading{
+        font-weight: $font-raleway-bold;
+        font-size: 17px;
+    }
+    &__info{    
+        font-size: 20px;
+    }
+}
+
+.form--contact{
+    .form-control{
+        background: $form-input-bg;
+        border: $form-input-border;
+        border-radius: $form-input-border-radius;
+        color: $form-input-color;
+        font-size: $form-input-font-size;
+        font-weight: $font-raleway-bold;
+        line-height: 1;
+        padding: $form-input-padding; 
+        @include input-placeholder {
+            color: $form-input-color;
+            font-weight: $font-raleway-light;
+        }
+        &:focus{
+            background: $form-input-bg-active;
+            box-shadow: none;
+            border-left: $form-input-border-active;
+        }
+    }
+    .has-error{
+        .form-control{
+            @include input-placeholder {
+                color: $red;
+            }
+            &:focus{
+                border-left-color: $red;
+            }
+        }
+        .error-msg{
+            position: static;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px){
+    .section--contact{
+        padding: 100px 0 120px;
+    }
+    .form--contact{
+        max-width: 500px;
+    }
+    .contact-info{
+        padding: 0 0 0 70px;
+        text-align: left;
+    }
+}

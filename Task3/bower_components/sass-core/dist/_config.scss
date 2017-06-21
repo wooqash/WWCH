@@ -1,0 +1,78 @@
+// =============================================================================
+// Breakpoints
+// =============================================================================
+
+$sc-tablet-min: 768px !default;
+$sc-desktop-min: 992px !default;
+
+$sc-mobile-lg-min: 480px !default;
+$sc-tablet-lg-min: 850px !default;
+$sc-desktop-lg-min: 1400px !default;
+
+
+
+@include add-breakpoint('mobile', 0px);
+@include add-breakpoint('mobile-ex', max-width $sc-tablet-min - 1);
+@include add-breakpoint('mobile-sm', max-width $sc-mobile-lg-min - 1);
+@include add-breakpoint('mobile-lg', $sc-mobile-lg-min $sc-tablet-min - 1);
+
+@include add-breakpoint('tablet', $sc-tablet-min);
+@include add-breakpoint('tablet-ex', $sc-tablet-min $sc-desktop-min - 1);
+@include add-breakpoint('tablet-sm', $sc-tablet-min $sc-tablet-lg-min - 1);
+@include add-breakpoint('tablet-lg', $sc-tablet-lg-min $sc-desktop-min - 1);
+
+@include add-breakpoint('desktop', $sc-desktop-min);
+@include add-breakpoint('desktop-sm', $sc-desktop-min $sc-desktop-lg-min - 1);
+@include add-breakpoint('desktop-lg', $sc-desktop-lg-min);
+
+
+//retina settings for retina-kind breakpoints (see _retina.scss)
+$sc-retina-suffix: (
+  192: '@2x'
+) !default;
+
+
+//base breakpoints for vw/percentage converting (mainly fonts); specify only ones that are different than main breakpoints
+$sc-design-breakpoints: () !default;
+//example: $sc-design-breakpoints: (mobile: 600px, tablet: 900px);
+
+
+
+// =============================================================================
+// Fonts
+// =============================================================================
+$sc-font-sets: (
+  sm: (mobile: 14px, tablet: 14px, desktop: 14px),
+  md: (mobile: 16px, tablet: 16px, desktop: 16px),
+  lg: (mobile: 22px, tablet: 22px, desktop: 22px)
+) !default;
+
+//default font set for font-* mixins
+$sc-font-set-default: md !default;
+
+//base font size used to calculate rem values
+$sc-font-rem-base: 16px !default;
+
+//font directory for sc-font-face mixin (relative to the output css file)
+$sc-font-dir: 'fonts/' !default;
+
+//default font formats
+$sc-font-formats: woff woff2 !default; //add ttf eot for IE9 and old Andorid/iOS
+
+//breakpoints for which font vw is not set (px value is used)
+$sc-font-conv-vw-exclude: (desktop, desktop-lg) !default;
+
+//px fallback ratio for font vw units (set to 0 to disable fallback)
+$sc-font-conv-vw-fallback-ratio: 0.8 !default;
+
+//font weights
+$font-w-thin: 100 !default;
+$font-w-xlight: 200 !default;
+$font-w-light: 300 !default;
+$font-w-normal: 400 !default;
+$font-w-medium: 500 !default;
+$font-w-semibold: 600 !default;
+$font-w-bold: 700 !default;
+$font-w-xbold: 800 !default;
+$font-w-black: 900 !default;
+

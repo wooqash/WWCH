@@ -1,0 +1,193 @@
+// =============================================================================
+// Unit converters
+// =============================================================================
+
+//returns the given breakpoint width
+@function unit-px($breakpoint: mobile, $useDesignBreakpoints: true) {
+  @return breakpoint-px($breakpoint, $useDesignBreakpoints);
+}
+
+//converts px value to rem according to font set or literally passed px base
+@function unit-rem($sizePx, $baseSizePx: $sc-font-rem-base) {
+  $newSize: $sizePx / $baseSizePx * 1rem;
+  @return $newSize;
+}
+
+//converts px units to percentage, with breakpoint width as a base
+@function unit-pc($sizePx, $breakpoint: mobile, $useDesignBreakpoints: true) {
+  @return unit-conv($sizePx, $breakpoint, pc, $useDesignBreakpoints);
+}
+
+//converts px units to vw, with breakpoint width as a base
+@function unit-vw($sizePx, $breakpoint: mobile, $useDesignBreakpoints: true) {
+  @return unit-conv($sizePx, $breakpoint, vw, $useDesignBreakpoints);
+}
+
+//universal function for percent/vw (used by shorthand unit-pc and unit-vw function)
+//converts px value using specified breakpoint px width as a base
+@function unit-conv($sizePx, $breakpoint: mobile, $targetUnit: pc, $useDesignBreakpoints: true) {
+
+  $isPc: $targetUnit == pc;
+  $isVw: $targetUnit == vw;
+
+  $breakpointWidth: $breakpoint;
+  @if type-of($breakpoint) == string {
+    $breakpointWidth: breakpoint-px($breakpoint, $useDesignBreakpoints);
+  }
+  $breakpointWidth: strip-units($breakpointWidth);
+
+  $newSize: '';
+  @if $targetUnit == pc {
+    $newSize: percentage((strip-units($sizePx) / $breakpointWidth));
+  }
+  @else if $targetUnit == vw {
+    $newSize: (strip-units($sizePx) * 100 / $breakpointWidth) * 1vw;
+  }
+  @else {
+    @warn 'sass-core/unit-conv: Wrong target unit!';
+  }
+
+  @return $newSize;
+}
+
+
+
+// =============================================================================
+// Grid
+// =============================================================================
+
+@mixin grid-cont($gutter) {
+  $sc-grid-last-gutter: $gutter !global;
+  
+  $gutter: $gutter/2;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  margin-left: auto;  
+  margin-right: auto;
+}
+
+@mixin grid-row($gutter: null, $clearfix: true) {
+  
+  @if ($gutter == null) {
+    $sc-grid-last-gutter: 0 !default;
+    $gutter:  $sc-grid-last-gutter;
+  }
+  $sc-grid-last-gutter: $gutter !default !global;
+
+  $gutter: $gutter/2;
+
+  @if ($clearfix) {
+    @include clearfix;
+  }
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+}
+
+@mixin grid-col($width, $gutter: null) {
+  @if ($gutter == null) {
+    $sc-grid-last-gutter: 0 !default;
+    $gutter:  $sc-grid-last-gutter;
+  }
+  //$sc-grid-last-gutter: $gutter !default !global;
+
+  $gutter: $gutter/2;
+
+  float: left;
+  width: $width;
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+
+
+// =============================================================================
+// Responsive sprites
+// =============================================================================
+
+//used for sprite wrapper
+@mixin sprite-wrap-rwd($sprite) {
+  $sprite-width: nth($sprite, 5);
+  max-width: $sprite-width;
+}
+
+//used for sprite container
+@mixin sprite-rwd($sprite, $useSpritesheet: null) {
+  @include sprite-image($sprite);
+
+  @if not $useSpritesheet {
+    $useSpritesheet: $spritesheet;
+  }
+
+  $image-width: strip-units(nth($useSpritesheet, 1));
+  $image-height: strip-units(nth($useSpritesheet, 2));
+  $sprite-width: strip-units(nth($sprite, 5));
+  $sprite-height: strip-units(nth($sprite, 6));
+  $sprite-offset-x: strip-units(nth($sprite, 1));
+  $sprite-offset-y: strip-units(nth($sprite, 2));
+  $sprite-size-x: ($image-width / $sprite-width) * 100%;
+  $sprite-size-y: ($image-height / $sprite-height) * 100%;
+  $sprite-pos-x: 0;
+  $sprite-pos-y: 0;
+  @if $image-width > $sprite-width {
+     $sprite-pos-x: ($sprite-offset-x / ($image-width - $sprite-width)) * 100%;
+  }
+  @if $image-height > $sprite-height {
+     $sprite-pos-y: ($sprite-offset-y / ($image-height - $sprite-height)) * 100%;
+  }
+
+
+  background-position: $sprite-pos-x $sprite-pos-y;
+  background-size: $sprite-size-x $sprite-size-y;
+  background-repeat: no-repeat;
+
+  display: inline-block;
+  width: 100%;
+  height: 0;
+  padding-bottom: ($sprite-height / $sprite-width) * 100%;
+}
+
+
+
+// =============================================================================
+// Internal
+// =============================================================================
+
+//returns breakpoint width in px
+@function breakpoint-px($breakpoint: mobile, $useDesignBreakpoints: true) {
+
+  @if $useDesignBreakpoints and map-has-key($sc-design-breakpoints, $breakpoint) {
+    @return map-get($sc-design-breakpoints, $breakpoint);
+  }
+  @else {
+
+    @if ($breakpoint == mobile) {
+      @return $sc-tablet-min - 1;
+    }
+    @elseif ($breakpoint == mobile-sm) {
+      @return $sc-mobile-lg-min - 1;
+    }
+    @else if ($breakpoint == tablet) {
+      @return $sc-desktop-min - 1;
+    }
+    @else if ($breakpoint == tablet-sm) {
+      @return $sc-tablet-lg-min - 1;
+    }
+    @else if (($breakpoint == desktop) or ($breakpoint == desktop-sm)) {
+      @return $sc-desktop-min;
+    }
+    @else if ($breakpoint == desktop-lg) {
+      @return $sc-desktop-lg-min;
+    }
+    @else {
+      @warn 'sass-core/breakpoint-px: breakpoint "' + $breakpoint + '" not allowed!';
+    }
+  }
+}
+
+//strips units from value
+@function strip-units($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}

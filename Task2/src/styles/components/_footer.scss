@@ -1,0 +1,41 @@
+$footer-bg-color: $raisin-black;
+$footer-text-color: $gray;
+$footer-text-font-size: 16px;
+$footer-marker-color: $radical-red;
+
+.footer{
+    padding: 20px 0;
+    text-align: center;
+    min-height: 90px;
+    background-color: $footer-bg-color;
+    color: $footer-text-color;
+}
+.footer__copyrights,
+.footer__logo,
+.footer__author{
+    margin-bottom: 10px;
+}
+
+.footer__marker{
+    color: $footer-marker-color;
+    font-weight: $font-raleway-bold;
+}
+
+@media only screen and (min-width: 992px){
+    .footer{
+        display: flex;
+        align-items: center;
+    }
+    .footer__copyrights,
+    .footer__logo,
+    .footer__author{
+        margin-bottom: 0;
+    }
+    .footer__copyrights{
+        text-align: left;
+    }
+    .footer__author{
+        text-align: right;
+    }
+}
+
