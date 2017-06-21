@@ -1,10 +1,6 @@
+/*globals $:false */
+
 'use strict';
-
-
-//import * as utils from './utils';
-
-
-//console.log(utils);
 
 $(document).ready(function(){
     
@@ -151,22 +147,18 @@ $(document).ready(function(){
     }
 
     function smoothScroll(event){
+				const that = event.target;
         // On-page links
-        if (
-            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-            && 
-            location.hostname == this.hostname
-        ) {
+			if (location.pathname.replace(/^\//, '') === that.pathname.replace(/^\//, '') && location.hostname === that.hostname) {
             // Figure out element to scroll to
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+					var target = $(that.hash);
+					target = target.length ? target : $('[name=' + that.hash.slice(1) + ']');
             // Does a scroll target exist?
             
             if($('.navbar-collapse').hasClass('in')){
                 $('.navbar-toggle').trigger('click');
             }
-            
-            
+                        
             if (target.length) {
                 // Only prevent default if animation is actually gonna happen
                 event.preventDefault();
@@ -182,7 +174,7 @@ $(document).ready(function(){
                     } else {
                         $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
                         $target.focus(); // Set focus again
-                    };
+                    }
                 });
             }
         }
