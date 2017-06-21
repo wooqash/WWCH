@@ -147,7 +147,7 @@ $(document).ready(function(){
     }
 
     function smoothScroll(event){
-				const that = event.target;
+				const that = event.currentTarget;
         // On-page links
 			if (location.pathname.replace(/^\//, '') === that.pathname.replace(/^\//, '') && location.hostname === that.hostname) {
             // Figure out element to scroll to
