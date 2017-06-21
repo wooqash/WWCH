@@ -1,11 +1,11 @@
 'use strict';
 
-<<<<<<< HEAD
+
 //import * as utils from './utils';
 
 
 //console.log(utils);
-=======
+
 $(document).ready(function(){
     
     const settings = {
@@ -147,13 +147,9 @@ $(document).ready(function(){
     }
     
     function resizePage(){
-        setNavHeight();
+				settings.navHeight =  $('.navbar').height();
     }
-    
-    function setNavHeight(){
-        settings.navHeight =  $('.navbar').height();
-    }
-    
+
     function smoothScroll(event){
         // On-page links
         if (
@@ -200,5 +196,3 @@ $(document).ready(function(){
         .off('click')
         .on('click', smoothScroll);
 });
-
->>>>>>> task2
