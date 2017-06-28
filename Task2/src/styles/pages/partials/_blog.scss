@@ -16,6 +16,10 @@ $blog-section-text-color: $white;
 }
 .blog-list{
     margin-bottom: 50px;
+		display: none;
+		&.visible{
+			display: block
+		}
 }
 .blog-intro{
     position: relative;

@@ -6,7 +6,8 @@ $(document).ready(function(){
     
     const settings = {
         'navHeight': 0,
-        'galleryRows': 4
+        'galleryRows': 4,
+				'blogRows': 3
     };
     
     $(window).on('resize', resizePage).triggerHandler('resize');
@@ -56,12 +57,32 @@ $(document).ready(function(){
             else{
                 $('<div class="row"><div class="col-sm-6 gallery__item"><img src="http://lorempixel.com/570/400/food/" alt="" class="img-responsive"></div><div class="col-sm-6 gallery__item"><img src="http://lorempixel.com/570/400/sports/" alt="" class="img-responsive"></div></div>').insertBefore('#GalleryViewMore');
             }
+						rows++;
         }
+			
+				if(rows === settings.galleryRows){
+					$('#GalleryViewMore').hide();
+				}
     });
     
-    $('#GalleryViewMore').on('click', function(){
-        
+		$('#BlogViewMore').on('click', function(){
+				let rows = $('.blog-list.visible').length;
+				if(rows < settings.blogRows){
+						$('.blog-list.visible').next().addClass('visible');
+						rows++;
+				}
+				if(rows === settings.blogRows){
+					$('#BlogViewMore').hide();
+				}
     });
+		
+		$('#ContactSend').on('click', function(e){
+				e.preventDefault();
+				$('#ContactFormName').trigger('blur');
+				$('#ContactFormEmail').trigger('blur');
+				$('#ContactFormPhone').trigger('blur');
+				$('#ContactFormMessage').trigger('blur');
+		});
     
     function handleErrors(status, group){
         console.log(status, $(group));
